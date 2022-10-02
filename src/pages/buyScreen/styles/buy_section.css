@@ -40,7 +40,7 @@ main {
 h1, p {
     position: relative;
     color: white;
-    font-family: sans-serif;
+    font-family: 'Jost', sans-serif;
 }
 
 button {
