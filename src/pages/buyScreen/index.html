@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<link rel="stylesheet" href="/src/components/header/styles/header.css">
+		<link rel="stylesheet" href="/src/components/footer/styles/footer.css">
+		<link rel="stylesheet" href="/src/common/styles/fonts.css">
+        <link rel="stylesheet" href="/src/pages/buyScreen/styles/buy_section.css">
+	</head>
+    <body>
+        <header>
+			<nav>
+				<a class="logo" href="/">Logo</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/historico">Historico</a></li>
+					<li><a href="/comprar">Comprar</a></li>
+					<li><a href="/validar">Validar</a></li>
+					<li><a href="/recarregar">Recarregar</a></li>
+					<li><a class="prices" href="/preços">Preços</a></li>
+				</ul>
+			</nav>
+		</header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="rectangle">
+
+                        <div><h1>Compre o seu Passe</h1></div><br>
+                        
+                        <div class="section">
+                            <p>Tipo de passe</p>
+
+                            <div class="white_box">
+                                <form>
+                                    <label for="unico">
+                                        <input id="unico" type="radio" name="tipo" checked>Bilhete Único
+                                    </label><br>
+                                    <label for="duplo">
+                                        <input id="duplo" type="radio" name="tipo">Bilhete Duplo
+                                    </label><br>
+                                    <label for="semanal">
+                                        <input id="semanal" type="radio" name="tipo">Bilhete Semanal
+                                    </label><br>
+                                    <label for="mensal">
+                                        <input id="mensal" type="radio" name="tipo">Bilhete Mensal
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <p>Modalidade de passe</p>
+                            <div class="white_box">
+                                <form>
+                                    <label for="tradicional">
+                                        <input id="tradicional" type="radio" name="modalidade" checked>Tradicional
+                                    </label><br>
+                                    <label for="pcd">
+                                        <input id="pcd" type="radio" name="modalidade">PCD
+                                    </label><br>
+                                    <label for="idoso">
+                                        <input id="idoso" type="radio" name="modalidade">Idoso(a)
+                                    </label><br>
+                                    <label for="estudante">
+                                        <input id="estudante" type="radio" name="modalidade">Estudante
+                                    </label><br>
+                                    <label for="gestante">
+                                        <input id="gestante" type="radio" name="modalidade">Gestante
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        <div class="section">
+                            <p>Local de utilização</p>
+                            <div class="white_box">
+                                <form>
+                                    <label for="gotham">
+                                        <input id="gotham" type="radio" name="local" checked>Gotham City
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <p>Dia</p> 
+                            <form>
+                                <input id ='data' type="date" placeholder="DD/MM/AAAA" required>            
+                            </form>   
+                        </div>
+
+                        <div class="section">
+                            <div class="info">
+                                <p>Info:</p>
+                                <p>
+                                    Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, 
+                                    e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, 
+                                    por um período de 40 minutos. 
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <p>Já possui um passe? <a href="#">Recarregue-o clicando aqui.</a></p>
+                        </div>
+
+                        <div class="section">
+                            <form>
+                                <a href="/src/pages/rulesScreen/index.html">
+                                    <button>Gerar</button>   
+                                </a> 
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <footer class="footer">
+					<div class="footer_container">
+						<a><h1 class="footer_logo">LOGO</h1></a>
+						<div class="row_1">
+							<p class="about_p row1_element">
+								No Nome do Site sua compra esta segura!
+								Para garantirmos que seus dados estejam sempre protegidos,
+								não armazenamos nenhuma informação do cartão de crédito utilizando,
+								seguindo os protocolos de criptografia e segurança das principais 
+								instituições bancárias do Brasil.
+							</p>
+							<ul class="other_pages row1_element">
+								<li class="page_footer_link"><a href="#"><u>Comprar Ticket</u></a></li>
+								<li class="page_footer_link"><a href="#"><u>Validar Ticket</u></a></li>
+								<li class="page_footer_link"><a href="#"><u>Regarregar Ticket</u></a></li>
+								<li class="page_footer_link"><a href="#"><u>Sobre nós</u></a></li>
+							</ul>
+							<img class="row1_element warranty_img row_1" src="/src/components/footer/public/warranty.svg">
+						</div>
+						<div class="row_2">
+							<h1 class="destinty_list">Destinos</h1>
+							<ul class="destinys">
+								<li><a href="#"><u>Amusement Mile</u></a></li>
+								<li><a href="#"><u>Burnley</u></a></li>
+								<li><a href="#"><u>Somerset</u></a></li>
+								<li><a href="#"><u>Old Gotham</u></a></li>
+								<li><a href="#"><u>Mais destinos +</u></a></li>
+							</ul>
+						</div>
+						<div class="col_1">
+							<h5 class="copyright">Copyright 2022 © Todos os Direitos Reservados. Desenvolvido por: </h5>
+							<p class="copyright_name">Felipe Fadelli Padovan</p>
+							<p class="copyright_name">Felipe Santos de Lima</p>
+							<p class="copyright_name">Matheus Caldas</p>
+							<p class="copyright_name">Raphaela de Souza Ribeiro</p>
+							<p class="copyright_name">Vinicius Henrique de Oliveira Neves</p>
+						</div>
+					</div>
+				</footer>
+            </main>
+        </div>
+
+        <script src="/src/components/header/scripts/mobileNavbar.js"></script>
+    </body>
+</html>
