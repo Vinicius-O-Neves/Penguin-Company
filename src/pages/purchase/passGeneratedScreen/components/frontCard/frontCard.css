@@ -1,0 +1,21 @@
+.front_card {
+    position: relative;
+    text-align: center;
+}
+
+.code_txt_p {
+    color: white;
+    z-index: 1;
+}
+
+.img_front_card {
+    position: relative;
+}
+
+.codes_info {
+    position: absolute;
+    top: 60%;
+    right: 5%;
+}
+
+
