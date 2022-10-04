@@ -24,11 +24,7 @@ class FrontCard extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-<<<<<<< HEAD
         this.shadowRoot.querySelector(".pass_number").innerText = 
-=======
-        this.shadowRoot.querySelector("pass_number").innerText = 
->>>>>>> c5c20fb6634e2afb5c146fb3bea064ba4a65086b
             this.getAttribute("pass_code");    
     }
     
