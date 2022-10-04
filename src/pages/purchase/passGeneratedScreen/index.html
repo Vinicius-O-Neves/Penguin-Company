@@ -34,14 +34,18 @@
 			<main>
 				<div class="container">
 					<div class="pass_generated_section">
-							<h1>Seu passe foi gerado com sucesso!</h1>
+							<h1 class="pass_generate">Seu passe foi gerado com sucesso!</h1>
+							<div class="front_card">
+								<p></p>
+							</div>
+							<div class="back_card">
+								<p></p>
+							</div>
                             <div class="card_images">
-                                <img src="./public/cartão_bilhete_urbano_front.svg">
-                                <img src="./public/cartão_bilhete_urbano_back.svg">
-                                <img src="./public/download_icon.svg">
+								<front-card pass_code = "#1234"></front-card>
                             </div>
                             <a href="#">
-                                <p><u>Clique aqui para acessar o relátorio de gerenciamento</u></p>
+                                <p class="management_report"><u>Clique aqui para acessar o relátorio de gerenciamento</u></p>
                             </a>
 					</div>
 				</div>
@@ -79,7 +83,7 @@
 							<h5 class="copyright">Copyright 2022 © Todos os Direitos Reservados. Desenvolvido por: </h5>
 							<p class="copyright_name">Felipe Fadelli Padovan</p>
 							<p class="copyright_name">Felipe Santos de Lima</p>
-							<p class="copyright_name">Matheus Caldas</p>
+							<p class="copyright_name">Matheus Santos Caldas</p>
 							<p class="copyright_name">Raphaela de Souza Ribeiro</p>
 							<p class="copyright_name">Vinicius Henrique de Oliveira Neves</p>
 						</div>
@@ -88,6 +92,7 @@
 			</main>
 		</div>
 		
+		<script src="./components/frontCard/frontCard.js" type="module"></script>
 		<script src="/src/components/header/scripts/mobileNavbar.js"></script>
 	</body>
 </html>

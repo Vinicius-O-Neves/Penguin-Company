@@ -39,3 +39,19 @@ main {
     height: fit-content;
     border-radius: 50px;
 }
+
+.pass_generate {
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+}
+
+.management_report {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 1.3rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: normal;
+}
