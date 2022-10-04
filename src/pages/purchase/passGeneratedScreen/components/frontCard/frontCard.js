@@ -1,5 +1,4 @@
 const template = document.createElement("template");
-
 template.innerHTML = `
     <link rel="stylesheet" href="/src/pages/purchase/passGeneratedScreen/components/frontCard/frontCard.css">
     
