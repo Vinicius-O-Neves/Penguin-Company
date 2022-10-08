@@ -55,3 +55,9 @@ main {
     font-family: 'Jost', sans-serif;
     font-weight: normal;
 }
+
+.card_image {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+}

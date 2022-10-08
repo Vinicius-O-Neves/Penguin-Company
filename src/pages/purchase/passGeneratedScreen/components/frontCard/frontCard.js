@@ -1,6 +1,7 @@
 const template = document.createElement("template");
 template.innerHTML = `
     <link rel="stylesheet" href="/src/pages/purchase/passGeneratedScreen/components/frontCard/frontCard.css">
+    <link rel="stylesheet" href="/src/common/styles/fonts.css">
     
     <div class="front_card">
         <img class="img_front_card" src="/src/pages/purchase/passGeneratedScreen/public/cartão_bilhete_urbano_front.svg">

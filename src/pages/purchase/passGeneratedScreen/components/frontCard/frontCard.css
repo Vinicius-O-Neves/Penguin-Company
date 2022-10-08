@@ -1,11 +1,15 @@
 .front_card {
     position: relative;
-    text-align: center;
+   
 }
 
 .code_txt_p {
-    color: white;
+    color: #aca09e;
     z-index: 1;
+    font-size: 1.2rem;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+    margin: 4%;
 }
 
 .img_front_card {
@@ -16,6 +20,8 @@
     position: absolute;
     top: 60%;
     right: 5%;
+    width: 50%;
+    justify-content: center;
 }
 
 

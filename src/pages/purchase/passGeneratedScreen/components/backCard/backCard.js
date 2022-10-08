@@ -2,12 +2,23 @@ const template = document.createElement("template");
 
 template.innerHTML = `
     <link rel="stylesheet" href="/src/pages/purchase/passGeneratedScreen/components/backCard/backCard.css">
+    <link rel="stylesheet" href="/src/common/styles/fonts.css">
     
     <div class="back_card">
         <img class="img_back_card" src="/src/pages/purchase/passGeneratedScreen/public/cartão_bilhete_urbano_back.svg">
-        <div class="codes_info">
-            <p class="code_txt_p">Código de acesso:</p>
-            <p class="code_txt_p pass_number">#0000</p>
+        <div class="card_infos">
+            <div>
+                <p class="code_txt_p">Modalidade:</p>
+                <p class="code_txt_p modality">Tradicional</p>
+            </div>
+            <div>
+                <p class="code_txt_p">Tipo de passe:</p>
+                <p class="code_txt_p type">Único</p>
+            </div>
+            <div>
+                <p class="code_txt_p">Data de geração:</p>
+                <p class="code_txt_p date">31/08/2022</p>
+            </div>
         </div>
     </div>    
 `;
@@ -20,16 +31,20 @@ class BackCard extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return [""];
+        return ["modality", "type", "date"];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        this.shadowRoot.querySelector("").innerText = 
-            this.getAttribute("");    
+        this.shadowRoot.querySelector(".modality").innerText = 
+            this.getAttribute("modality");    
+        this.shadowRoot.querySelector(".type").innerText = 
+            this.getAttribute("type");  
+         this.shadowRoot.querySelector(".date").innerText = 
+            this.getAttribute("date");  
     }
     
 }
 
-window.customElements.define('front-card',);
+window.customElements.define('back-card', BackCard);
 
 export default BackCard;
