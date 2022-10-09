@@ -4,7 +4,7 @@ template.innerHTML = `
     <link rel="stylesheet" href="/src/common/styles/fonts.css">
     
     <div class="front_card">
-        <img class="img_front_card" src="/src/pages/purchase/passGeneratedScreen/public/cartão_bilhete_urbano_front.svg">
+        <img class="img_front_card" src="/src/pages/purchase/passGeneratedScreen/public/images/cartão_bilhete_urbano_front.svg">
         <div class="codes_info">
             <p class="code_txt_p">Código de acesso:</p>
             <p class="code_txt_p pass_number">#0000</p>

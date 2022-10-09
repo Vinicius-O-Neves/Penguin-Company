@@ -12,7 +12,7 @@ main {
     min-width: 320px;
     max-width: 1500px;
     margin: auto;
-    background-image: url("/src/common/public/gotham_map_2.svg");
+    background-image: url("/src/common/public/images/gotham_map_2.svg");
     max-width: 100%;
     height: fit-content;
     max-height: 100%;

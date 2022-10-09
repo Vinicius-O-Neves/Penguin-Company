@@ -5,7 +5,7 @@ template.innerHTML = `
     <link rel="stylesheet" href="/src/common/styles/fonts.css">
     
     <div class="back_card">
-        <img class="img_back_card" src="/src/pages/purchase/passGeneratedScreen/public/cartão_bilhete_urbano_back.svg">
+        <img class="img_back_card" src="/src/pages/purchase/passGeneratedScreen/public/images/cartão_bilhete_urbano_back.svg">
         <div class="card_infos">
             <div>
                 <p class="code_txt_p">Modalidade:</p>
