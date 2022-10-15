@@ -1,10 +1,11 @@
 .footer {
     background: linear-gradient(rgb(53, 53, 53), black);
     height: fit-content;
+    margin: 0%;
+    padding: 0%;
 }
 
 .footer_container {
-    margin: auto;
     padding: 2%;
 }
 
@@ -38,6 +39,7 @@ ul {
 
 ul.other_pages, ul.destinys {
     display: flex;
+    width: fit-content;
     flex-direction: column;
     gap: 20px;
     font-size: 1.3rem;
