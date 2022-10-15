@@ -59,13 +59,13 @@ h1, p {
 }
 
 #pass_number {
-    width: 100%;
+    width: 70vh;
     height: 3rem;
     font-size: 1.9rem;
     color: black;
     margin-top: 3%;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     border-color: black;
 }
 
