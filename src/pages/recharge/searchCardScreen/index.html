@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar Cartão para Recarga</title>
+    <link rel="stylesheet" href="/src/common/components/header/styles/header.css">
+	<link rel="stylesheet" href="/src/common/styles/fonts.css">
+    <link rel="stylesheet" href="/src/pages/recharge/searchCardScreen/styles/searchCardScreen.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="/">Logo</a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/historico">Historico</a></li>
+                <li><a href="/comprar">Comprar</a></li>
+                <li><a href="/validar">Validar</a></li>
+                <li><a href="/recarregar">Recarregar</a></li>
+                <li><a class="prices" href="/preços">Preços</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main_container">
+        <main>
+            <div class="container">
+                <div class="search_card_container">
+                    <img class="search_item card_example" src="/src/pages/recharge/searchCardScreen/public/Cartão_Bilhete_Urbano_Exemplo.svg">
+                    <div class="search_card_section search_item">
+                        <h1>Numero do cartão</h1>
+                        <input id="pass_number" type="text" placeholder="# xxxxxx">
+                        <p class="txt_search_fail">Cartão não encontrado. Tente Novamente</p>
+                        <div class="search">
+                            <li class="btn_search_pass"><a href="/gerar_passe">Procurar cartão</a></li>
+                            <img class="btn_search_pass" src="/src/common/public/images/arrow_right.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <custom-footer></custom-footer>
+    </div>
+
+    <script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
+    <script src="/src/common/components/header/scripts/mobileNavbar.js"></script>
+</body>
+</html>
