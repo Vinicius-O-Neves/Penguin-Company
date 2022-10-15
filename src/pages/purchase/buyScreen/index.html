@@ -35,90 +35,119 @@
                 <div class="container">
                     <div class="rectangle">
 
-                        <div><h1>Compre o seu Passe</h1></div><br>
+                        <h1>Compre o seu Passe</h1><br>
+
                         
-                        <div class="section">
-                            <p>Tipo de passe</p>
+                        <div class="content">
+                            <div class="big_section">
+                                <div class="line">
+                                    <div class="section">
+                                        <p>Tipo de passe</p>
 
-                            <div class="white_box">
-                                <form>
-                                    <label for="unico">
-                                        <input id="unico" type="radio" name="tipo" checked>Bilhete Único
-                                    </label><br>
-                                    <label for="duplo">
-                                        <input id="duplo" type="radio" name="tipo">Bilhete Duplo
-                                    </label><br>
-                                    <label for="semanal">
-                                        <input id="semanal" type="radio" name="tipo">Bilhete Semanal
-                                    </label><br>
-                                    <label for="mensal">
-                                        <input id="mensal" type="radio" name="tipo">Bilhete Mensal
-                                    </label>
-                                </form>
+                                        <div>
+                                            <form>
+                                                <label for="tipo">
+                                                    <select id="tipo">
+                                                        <option value="unico">Bilhete Único</option>
+                                                        <option value="duplo">Bilhete Duplo</option>
+                                                        <option value="semanal">Bilhete Semanal</option>
+                                                        <option value="mensal">Bilhete Mensal</option>
+                                                    </select>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="section">
+                                        <p>Modalidade de passe</p>
+                                        <div>
+                                            <form>
+                                                <label for="modalidade">
+                                                    <select id="modalidade">
+                                                        <option value="tradicional">Tradicional</option>
+                                                        <option value="pcd">PCD</option>
+                                                        <option value="idoso">Idoso(a)</option>
+                                                        <option value="estudante">Estudante</option>
+                                                        <option value="gestante">Gestante</option>
+                                                    </select>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line">
+                                    <div class="section">
+                                        <p>Local de utilização</p>
+                                        <div>
+                                            <form>
+                                                <label for="local">
+                                                    <select id="local">
+                                                        <option value="gotham">Gotham City</option>
+                                                    </select>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+        
+        
+                                    <div class="section">
+                                        <p>Dia</p> 
+                                        <div>
+                                            <form>
+                                                <input id ='data' type="date" placeholder="DD/MM/AAAA" required>            
+                                            </form>
+                                        </div>   
+                                    </div>
+                                </div>
+
+                                
+                                <div class="section">
+                                    <p>Já possui um passe? <a href="#">Recarregue-o clicando aqui.</a></p>
+                                </div>
+                                
+
+                                
+
                             </div>
-                        </div>
-
-                        <div class="section">
-                            <p>Modalidade de passe</p>
-                            <div class="white_box">
-                                <form>
-                                    <label for="tradicional">
-                                        <input id="tradicional" type="radio" name="modalidade" checked>Tradicional
-                                    </label><br>
-                                    <label for="pcd">
-                                        <input id="pcd" type="radio" name="modalidade">PCD
-                                    </label><br>
-                                    <label for="idoso">
-                                        <input id="idoso" type="radio" name="modalidade">Idoso(a)
-                                    </label><br>
-                                    <label for="estudante">
-                                        <input id="estudante" type="radio" name="modalidade">Estudante
-                                    </label><br>
-                                    <label for="gestante">
-                                        <input id="gestante" type="radio" name="modalidade">Gestante
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
-
-
-                        <div class="section">
-                            <p>Local de utilização</p>
-                            <div class="white_box">
-                                <form>
-                                    <label for="gotham">
-                                        <input id="gotham" type="radio" name="local" checked>Gotham City
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <p>Dia</p> 
-                            <form>
-                                <input id ='data' type="date" placeholder="DD/MM/AAAA" required>            
-                            </form>   
-                        </div>
-
-                        <div class="section">
-                            <div class="info">
-                                <p>Info:</p>
-                                <p>
-                                    Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, 
-                                    e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, 
-                                    por um período de 40 minutos. 
-                                </p>
-                            </div>
-                        </div>
                         
-                        <div class="section">
-                            <p>Já possui um passe? <a href="#">Recarregue-o clicando aqui.</a></p>
-                        </div>
-
-                        <div class="section">
-                            <a href="https://www.google.com.br">
-                                <button type="submit">Gerar</button>   
-                            </a> 
+                            <div class="big_section">
+                                <div class="line">
+                                    <div class="section">
+                                        <div class="info">
+                                            <p>Info:</p>
+                                            <p>
+                                                Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, 
+                                                e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, 
+                                                por um período de 40 minutos. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="section">
+                                        <div class="economy">
+                                            <p>ECONOMIA DE R$ 25,00</p>
+                                        </div>
+                                        <div class="price_adult">
+                                            <p>R$ 42,95</p>
+                                            <p class="cut_text">R$ 60,90</p>
+                                            <p>Por adulto, sem taxa</p>
+                                        </div>
+                                        <div class="price_total"> 
+                                            <p>1 adulto: R$ 42,95</p>
+                                            <p>Desconto: R$ 25,00</p>
+                                            <p>Total: R$ 42,95</p>               
+                                        </div>
+                                    </div>
+                                
+                                    <div class="section">
+                                        <a href="https://www.google.com.br">
+                                            <button type="submit">Gerar</button>   
+                                        </a> 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
