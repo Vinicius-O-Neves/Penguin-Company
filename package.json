@@ -1,0 +1,20 @@
+{
+  "name": "penguin-company",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vinicius-O-Neves/Penguin-Company.git"
+  },
+  "author": "Felipe Padovan, Felipe Lima, Raphaela Ribeiro, Matheus Caldas, Vinicius Neves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vinicius-O-Neves/Penguin-Company/issues"
+  },
+  "homepage": "https://github.com/Vinicius-O-Neves/Penguin-Company#readme"
+}
