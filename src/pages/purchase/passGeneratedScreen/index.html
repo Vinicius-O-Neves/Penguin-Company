@@ -5,6 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Comprar Ticket</title>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="/passGeneratedScreen.js"></script>
+		
 		<link rel="stylesheet" href="/header.css">
 		<link rel="stylesheet" href="/fonts.css">
         <link rel="stylesheet" href="/passGeneratedScreen.css">
@@ -35,8 +39,8 @@
 					<div class="pass_generated_section">
 							<h1 class="pass_generate" id="pass_number">Seu passe foi gerado com sucesso!</h1>
                             <div class="card_images">
-								<front-card class="card_image"></front-card>
-								<back-card class="card_image" modality='Tradicional' type='Único' date='07/03/2003'>
+								<front-card class="card_image" id="front_card" pass_code="0000"></front-card>
+								<back-card class="card_image" id="back_card" modality='Tradicional' type='Único' date='07/03/2003'>
 								</back-card>
                             </div>
                             <a href="#">
@@ -52,6 +56,5 @@
 		<script src="/backCard.js" type="module"></script>
 		<script src="/customFooter.js" type="module"></script>
 		<script src="/mobileNavbar.js"></script>
-		<script src="/passGeneratedScreen.js"></script>
 	</body>
 </html>

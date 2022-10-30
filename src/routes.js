@@ -7,9 +7,7 @@ const app = new nodeConfiguration().init();
 const DB = require('./database/server.js');
 const database = new DB();
 
-let userId;
-let $ = require('cheerio').load('passGeneratedScreen/index.html');
-$('pass_generate').replaceWith(`<h1>${userId}</h1>`);
+let userId, modality, type, date;
 
 app.get('/buy', (req, res) => {
     res.sendFile(__dirname + '/pages/purchase/buyScreen/index.html');
@@ -18,21 +16,28 @@ app.get('/buy', (req, res) => {
 app.post('/rules', async (req, res) => {
     let dateExtension = new DateExtension();
     userId = new GenerationExtension().makeId(6);
+    modality = req.body["modality"];
+    date = dateExtension.getDate();
+    type = req.body["type"];
 
     res.sendFile(__dirname + '/pages/purchase/rulesScreen/index.html');
 
     await database.createUserTicket(
         userId,
-        dateExtension.getDate(),
+        date,
         2,
-        req.body["modality"]
+        modality
     );
     await database.createAmountOfTickets(
         userId,
-        req.body["type"]
+        type
     );
 })
 
-app.get('/ticketGenerenated', (req, res) => {
-    res.sendFile(__dirname + '/pages/purchase/passGeneratedScreen/index.html')
-})
+app.get('/ticketGenerenated', async(req, res) => {
+    res.sendFile(__dirname + '/pages/purchase/passGeneratedScreen/index.html');
+});
+
+app.post('/ticketGenerenated', async(req, res) => {
+    res.send([modality, type, date, userId]);
+});

@@ -6,7 +6,7 @@ template.innerHTML = `
     <div class="front_card">
         <img class="img_front_card" src="/cartão_bilhete_urbano_front.svg">
         <div class="codes_info">
-            <p class="code_txt_p"></p>
+            <p class="code_txt_p">Código:</p>
             <p class="code_txt_p pass_number" id="pass_number"></p>
         </div>
     </div>    
@@ -28,7 +28,7 @@ class FrontCard extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         this.shadowRoot.querySelector(".pass_number").innerText = 
-            this.getAttribute("pass_number");
+            this.getAttribute("pass_code");
     }
     
 }
