@@ -38,16 +38,16 @@ class DB {
     
     try {
       switch (typeOfTicket) {
-        case "unico":
+        case "Único":
           data = [1, 0, 0, 0, idTicketUser];
           break;
-        case "duplo":
+        case "Duplo":
           data = [0, 1, 0, 0, idTicketUser];
           break;
-        case "semanal":
+        case "Semanal":
           data = [0, 0, 1, 0, idTicketUser];
           break;
-        case "mensal":
+        case "Mensal":
           data = [0, 0, 0, 1, idTicketUser];
           break;
         default:
