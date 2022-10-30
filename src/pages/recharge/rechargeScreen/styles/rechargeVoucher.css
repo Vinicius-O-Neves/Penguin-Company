@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-size: cover;
+    height: 100%;
+}
+
+.main_container {
+    min-width: 320px;
+    max-width: 1500px;
+    margin: auto;
+    background-image: url("/src/common/public/images/raining_background.jpg");
+    max-width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen_success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-bottom: 20%;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: 130vh;
+    height: fit-content;
+    border-radius: 50px;
+}
+
+.screen_summary {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-bottom: 20%;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: 130vh;
+    height: fit-content;
+    border-radius: 50px;
+}
+
+h1, p {
+    color: white;
+    font-family: 'Jost', sans-serif;
+}
+
+p {
+    font-size: 1.5rem;
+    padding-bottom: 12%;
+}
+
+.recharged_row_1 {
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.element_col {
+    display: inline-block;
+    margin: 2%;
+}
+
+.left_col {
+    place-items: start;
+}
+
+.right_col {
+    float: right;
+}
+
+
+
+
+
+

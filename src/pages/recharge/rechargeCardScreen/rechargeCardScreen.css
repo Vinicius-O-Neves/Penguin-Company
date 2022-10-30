@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+main {
+    background-size: cover;
+    height: 100%;
+}
+
+
+h1, p {
+    color: white;
+    font-family: 'Jost', sans-serif;
+}
+
+
+h1 {
+    margin-left: 25px;
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-justify: auto;
+}
+
+
+p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+button {
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 10px 75px;
+    transition-duration: 0.5s;
+    background-color: transparent;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 100%;
+}
+
+
+button:hover {
+    transition-duration: 0.5s;
+    opacity: 0.7;
+}
+
+
+select {
+    position: flex;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: white;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+a {
+    color: white;
+}
+
+
+.main_container {
+    min-width: 320px;
+    max-width: 1500px;
+    margin: auto;
+    background-image: url("/src/common/public/images/raining_background.jpg");
+    max-width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.info {
+    text-align: justify;
+    max-width: 400px;
+}
+
+
+.rectangle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7%;
+    margin-bottom: 20%;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: 130vh;
+    height: fit-content;
+    border-radius: 50px;
+}
+
+
+.content {
+    display: inline-block;
+}
+
+
+.line {
+    display: inline-block;
+}
+
+
+.big_section {
+    align-items: center;
+    float: left;
+}
+
+
+.generate_line {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+
+.section {
+    position: flex;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+
+.price_adult {
+    background-image: linear-gradient(to bottom right, #202020, #000000);
+    stroke: url(#3f3f3f);
+    text-align: center;
+    padding: 5px;
+    max-width: 400px;
+}
+
+
+.price_total {
+    background-image: linear-gradient(to bottom right, #8a8a8a, #7a7a7a);
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+    max-width: 400px;
+}
+
+.economy {
+    background-image: linear-gradient(to bottom right, #286623, #1C2315);
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px;
+    max-width: 400px;
+}
+
+.cut_text {
+    text-decoration: line-through;
+}

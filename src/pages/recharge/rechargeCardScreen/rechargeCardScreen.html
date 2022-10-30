@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Comprar Ticket</title>
+		<link rel="stylesheet" href="/src/common/components/header/styles/header.css">
+		<link rel="stylesheet" href="/src/common/components/footer/styles/footer.css">
+		<link rel="stylesheet" href="/src/common/styles/fonts.css">
+        <link rel="stylesheet" href="/src/pages/recharge/rechargeCardScreen/rechargeCardScreen.css">
+	</head>
+    <body>
+        <header>
+			<nav>
+				<a class="logo" href="/">Logo</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/historico">Historico</a></li>
+					<li><a href="/src/pages/purchase/buyScreen/index.html">Comprar</a></li>
+					<li><a href="/validar">Validar</a></li>
+					<li><a href="/src/pages/recharge/searchCardScreen/index.html">Recarregar</a></li>
+					<li><a class="prices" href="/preços">Preços</a></li>
+				</ul>
+			</nav>
+		</header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="rectangle">
+
+                        <h1>Recarregue o seu Passe</h1><br>
+
+                        
+                        <div class="content">
+                            <div class="big_section">
+                                <div class="line">
+                                    <form action="/src/pages/recharge/rechargeScreen/rechargeVoucher.html">
+                                        <div class="section">
+                                            <p>Tipo de passe</p>
+
+                                            <div>
+                                                <label for="tipo">
+                                                    <select id="tipo">
+                                                        <option value="unico">Bilhete Único</option>
+                                                        <option value="duplo">Bilhete Duplo</option>
+                                                        <option value="semanal">Bilhete Semanal</option>
+                                                        <option value="mensal">Bilhete Mensal</option>
+                                                    </select>
+                                                </label>     
+                                            </div>
+                                        </div>
+                                        <div class="section">
+                                            <p>Local de utilização</p>
+                                            <div>
+                                                <label for="local">
+                                                    <select id="local">
+                                                        <option value="gotham">Gotham City</option>
+                                                    </select>
+                                                </label> 
+                                            </div>
+                                        </div>
+                                        <div class="section">
+                                            
+                                                <button type="submit">Recarregar</button>   
+                                            
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+
+                            </div>
+                        
+                            <div class="big_section">
+                                <div class="line">
+                                    <div class="section">
+                                        <div class="info">
+                                            <p>Info:</p>
+                                            <p>
+                                                Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, 
+                                                e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, 
+                                                por um período de 40 minutos. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                
+                                    
+                                
+                                    
+                                </div>
+                                <div class="section">
+                                    <div class="economy">
+                                        <p>ECONOMIA DE R$ 25,00</p>
+                                    </div>
+                                    <div class="price_adult">
+                                        <p>R$ 42,95</p>
+                                        <p class="cut_text">R$ 60,90</p>
+                                        <p>Por adulto, sem taxa</p>
+                                    </div>
+                                    <div class="price_total"> 
+                                        <p>1 adulto: R$ 42,95</p>
+                                        <p>Desconto: R$ 25,00</p>
+                                        <p>Total: R$ 42,95</p>               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <custom-footer></custom-footer>
+            </main>
+        </div>
+
+        <script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
+        <script src="/src/components/header/scripts/mobileNavbar.js"></script>
+    </body>
+</html>

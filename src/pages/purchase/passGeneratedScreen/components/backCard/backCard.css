@@ -1,0 +1,25 @@
+.back_card {
+    position: relative;
+}
+
+.code_txt_p {
+    color: #aca09e;
+    z-index: 1;
+    font-size: 1.16rem;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+    margin: 7%;
+    text-overflow: ellipsis;
+}
+
+.img_back_card {
+    position: relative;
+}
+
+.card_infos {
+    position: absolute;
+    top: 2%;
+    right: 10%;
+    width: 50%;
+    justify-content: center;
+}

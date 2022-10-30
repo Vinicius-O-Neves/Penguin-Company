@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Comprar Ticket</title>
+		<link rel="stylesheet" href="/src/common/components/header/styles/header.css">
+		<link rel="stylesheet" href="/src/common/styles/fonts.css">
+        <link rel="stylesheet" href="/src/pages/recharge/rechargeScreen/styles/rechargeVoucher.css">
+        <link rel="stylesheet" href="/src/pages/recharge/rechargeScreen/styles/rechargeVoucherMedia.css">
+	</head>
+    <body>
+        <header>
+			<nav>
+				<a class="logo" href="/">Logo</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/historico">Historico</a></li>
+					<li><a href="/src/pages/purchase/buyScreen/index.html">Comprar</a></li>
+					<li><a href="/validar">Validar</a></li>
+					<li><a href="/src/pages/recharge/searchCardScreen/index.html">Recarregar</a></li>
+					<li><a class="prices" href="/preços">Preços</a></li>
+				</ul>
+			</nav>
+		</header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="cards_recharged">
+                        <div class="screen_success">
+                            <h1>
+                                Recarregado com sucesso!
+                            </h1>
+                            <div class="recharged_row_1">
+                                <div class="element_col left_col">
+                                    <p>Hora e data da compra</p>
+                                    <p>12:36 - 21/06/2022</p>
+                                </div>
+                                <div class="element_col right_col">
+                                    <p>Local de Utilização</p>
+                                    <p>Gotham</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screen_summary">
+                            <h1>
+                                Resumo da compra
+                            </h1>
+                            <div class="recharged_row_1">
+                                <div class="element_col left_col">
+                                <p>N. do cartão</p>
+                                <p>Tipo</p>
+                                <p>Modalidade</p>
+                                </div>
+                                <div class="element_col right_col">
+                                <p>xxxxxxxxxxxxxx</p>
+                                <p>Bilhete único</p>
+                                <p>Tradicional</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <custom-footer></custom-footer>
+        </div>
+
+        <script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
+        <script src="/src/common/components/header/scripts/mobileNavbar.js"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "penguin-company",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/routes.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vinicius-O-Neves/Penguin-Company.git"
+  },
+  "author": "Felipe Padovan, Felipe Lima, Raphaela Ribeiro, Matheus Caldas, Vinicius Neves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vinicius-O-Neves/Penguin-Company/issues"
+  },
+  "homepage": "https://github.com/Vinicius-O-Neves/Penguin-Company#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "oracledb": "^5.5.0",
+    "uniqid": "^5.4.0"
+  }
+}
