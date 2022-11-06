@@ -5,10 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Comprar Ticket</title>
-		<link rel="stylesheet" href="/src/common/components/header/styles/header.css">
-		<link rel="stylesheet" href="/src/common/styles/fonts.css">
-        <link rel="stylesheet" href="/src/pages/recharge/rechargeScreen/styles/rechargeVoucher.css">
-        <link rel="stylesheet" href="/src/pages/recharge/rechargeScreen/styles/rechargeVoucherMedia.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="/rechargeScreen.js"></script>
+
+		<link rel="stylesheet" href="/header.css">
+		<link rel="stylesheet" href="/fonts.css">
+        <link rel="stylesheet" href="/rechargeVoucher.css">
+        <link rel="stylesheet" href="/rechargeVoucherMedia.css">
 	</head>
     <body>
         <header>
@@ -22,9 +26,9 @@
 				<ul class="nav-list">
 					<li><a href="/home">Home</a></li>
 					<li><a href="/historico">Historico</a></li>
-					<li><a href="/src/pages/purchase/buyScreen/index.html">Comprar</a></li>
+					<li><a href="/buy">Comprar</a></li>
 					<li><a href="/validar">Validar</a></li>
-					<li><a href="/src/pages/recharge/searchCardScreen/index.html">Recarregar</a></li>
+					<li><a href="/searchCard">Recarregar</a></li>
 					<li><a class="prices" href="/preços">Preços</a></li>
 				</ul>
 			</nav>
@@ -71,7 +75,7 @@
             <custom-footer></custom-footer>
         </div>
 
-        <script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
-        <script src="/src/common/components/header/scripts/mobileNavbar.js"></script>
+        <script src="/customFooter.js" type="module"></script>
+        <script src="/mobileNavbar.js"></script>
     </body>
 </html>

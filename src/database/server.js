@@ -66,6 +66,38 @@ class DB {
       console.error(err);
     } 
   }
+
+  async checkUserId (idTicket) {
+    try {
+      const sqlCommand = "SELECT ID_TICKET_USER FROM TICKET_USER WHERE ID_TICKET_USER = " + "'" + idTicket + "'";
+      let result = await this.connection.execute(sqlCommand);
+      
+      console.log(result.rowsAffected);
+      console.log(sqlCommand);
+
+      this.connection.commit();   
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async rechargeUserTicket (rechargeId, date, idTicketUser, type) {
+    try {
+      const sqlCommand = "INSERT INTO RECHARGE (ID_RECHARGE, DATE_HOUR_RECHARGE, USER_ID, TYPE_ID_RECHARGE) "+
+      "VALUES (:0, :1, :2, :3)";
+      const data = [rechargeId, date, idTicketUser, type];
+
+      let result = await this.connection.execute(sqlCommand,data);
+      
+      console.log(result.rowsAffected);
+      console.log(sqlCommand,data);
+
+      this.connection.commit();   
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
 }
 
 module.exports = DB;

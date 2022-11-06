@@ -69,7 +69,7 @@ a {
     min-width: 320px;
     max-width: 1500px;
     margin: auto;
-    background-image: url("/src/common/public/images/raining_background.jpg");
+    background-image: url("/raining_background.jpg");
     max-width: 100%;
     height: fit-content;
     max-height: 100%;

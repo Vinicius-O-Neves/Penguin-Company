@@ -19,7 +19,7 @@ class NodeConfiguration {
         app.use(express.static(__dirname + '/common/components/footer/public'));
         /* -------------------------------------------------------------------- */
 
-        /* Paginas */
+        /* Paginas Compra*/
         app.use(express.static(__dirname + '/pages/purchase/buyScreen/styles'));
         app.use(express.static(__dirname + '/pages/purchase/buyScreen/scripts'));
 
@@ -32,6 +32,16 @@ class NodeConfiguration {
         app.use(express.static(__dirname + '/pages/purchase/passGeneratedScreen/components/backCard'));
         app.use(express.static(__dirname + '/pages/purchase/passGeneratedScreen/components/frontCard'));
         /* -------------------------------------------------------------------------------------------- */
+
+        /* Paginas Recarga*/
+        app.use(express.static(__dirname + '/pages/recharge/searchCardScreen/styles'));
+        app.use(express.static(__dirname + '/pages/recharge/searchCardScreen/public'));
+
+        app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/styles'));
+
+        app.use(express.static(__dirname + '/pages/recharge/rechargeCardScreen/styles'));
+        /* -------------------------------------------------------------------------------------------- */
+
 
         app.listen(5500, () => {
             console.log("servidor rodando\n");

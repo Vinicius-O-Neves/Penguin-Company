@@ -5,10 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Comprar Ticket</title>
-		<link rel="stylesheet" href="/src/common/components/header/styles/header.css">
-		<link rel="stylesheet" href="/src/common/components/footer/styles/footer.css">
-		<link rel="stylesheet" href="/src/common/styles/fonts.css">
-        <link rel="stylesheet" href="/src/pages/recharge/rechargeCardScreen/rechargeCardScreen.css">
+		<link rel="stylesheet" href="/header.css">
+		<link rel="stylesheet" href="/footer.css">
+		<link rel="stylesheet" href="/fonts.css">
+        <link rel="stylesheet" href="/rechargeCardScreen.css">
 	</head>
     <body>
         <header>
@@ -22,9 +22,9 @@
 				<ul class="nav-list">
 					<li><a href="/home">Home</a></li>
 					<li><a href="/historico">Historico</a></li>
-					<li><a href="/src/pages/purchase/buyScreen/index.html">Comprar</a></li>
+					<li><a href="/buy">Comprar</a></li>
 					<li><a href="/validar">Validar</a></li>
-					<li><a href="/src/pages/recharge/searchCardScreen/index.html">Recarregar</a></li>
+					<li><a href="/searchCard">Recarregar</a></li>
 					<li><a class="prices" href="/preços">Preços</a></li>
 				</ul>
 			</nav>
@@ -41,17 +41,17 @@
                         <div class="content">
                             <div class="big_section">
                                 <div class="line">
-                                    <form action="/src/pages/recharge/rechargeScreen/rechargeVoucher.html">
+                                    <form method="post" action="/rechargeVoucher">
                                         <div class="section">
                                             <p>Tipo de passe</p>
 
                                             <div>
                                                 <label for="tipo">
-                                                    <select id="tipo">
-                                                        <option value="unico">Bilhete Único</option>
-                                                        <option value="duplo">Bilhete Duplo</option>
-                                                        <option value="semanal">Bilhete Semanal</option>
-                                                        <option value="mensal">Bilhete Mensal</option>
+                                                    <select id="tipo" name="type">
+                                                        <option value="Único">Bilhete Único</option>
+                                                        <option value="Duplo">Bilhete Duplo</option>
+                                                        <option value="Semanal">Bilhete Semanal</option>
+                                                        <option value="Mensal">Bilhete Mensal</option>
                                                     </select>
                                                 </label>     
                                             </div>
@@ -60,7 +60,7 @@
                                             <p>Local de utilização</p>
                                             <div>
                                                 <label for="local">
-                                                    <select id="local">
+                                                    <select id="local" disabled>
                                                         <option value="gotham">Gotham City</option>
                                                     </select>
                                                 </label> 
@@ -118,7 +118,7 @@
             </main>
         </div>
 
-        <script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
-        <script src="/src/components/header/scripts/mobileNavbar.js"></script>
+        <script src="/customFooter.js" type="module"></script>
+        <script src="/mobileNavbar.js"></script>
     </body>
 </html>
