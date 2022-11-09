@@ -10,6 +10,7 @@ const rechargeId = require('./pages/recharge/searchCardScreen/scripts/searchCard
 const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
+var rechargeUser;
 let userId, modality, type, date, idTicket;
 
 app.get('/buy', (req, res) => {
@@ -53,10 +54,11 @@ app.get('/searchCard', (req, res) => {
 
 app.post('/rechargeCard', async(req, res) => {
     idTicket = req.body["pass_number"]
+    console.log(req.body);
 
     res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
 
-    await database.checkUserId(
+    rechargeUser = await database.checkUserId(
         idTicket
     );
 });
@@ -68,11 +70,11 @@ app.post('/rechargeVoucher', async(req, res) => {
     type = req.body["type"];
 
     res.sendFile(__dirname + '/pages/recharge/rechargeScreen/rechargeVoucher.html');
-
+    
     await database.rechargeUserTicket(
         rechargeId,
         date,
-        "iQMgvT",
+        rechargeUser[0][0],
         type
     );
 });
