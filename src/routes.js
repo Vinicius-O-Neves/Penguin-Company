@@ -70,10 +70,14 @@ app.post('/rechargeVoucher', async(req, res) => {
     type = req.body["type"];
 
     res.sendFile(__dirname + '/pages/recharge/rechargeScreen/rechargeVoucher.html');
-    
     await database.rechargeUserTicket(
         rechargeId,
         date,
+        rechargeUser[0][0],
+        type
+    );
+
+    await database.addAmount(
         rechargeUser[0][0],
         type
     );

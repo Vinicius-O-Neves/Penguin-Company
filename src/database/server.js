@@ -75,7 +75,7 @@ class DB {
       
       console.log(result.rowsAffected);
       console.log(sqlCommand, data);
-      
+      console.log(result)
       this.connection.commit();   
       return result.rows;
     } catch(err) {
@@ -96,6 +96,37 @@ class DB {
       console.log(sqlCommand,data);
 
       this.connection.commit();   
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async addAmount (idTicket, typeOfTicket) {
+    try {
+      const sqlCommandSelectTicketAmount = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";
+      const data = [idTicket];
+      let data2;
+      let result = await this.connection.execute(sqlCommandSelectTicketAmount, data);
+
+      switch (typeOfTicket) {
+        case "Único":
+          console.log(result.rows[0][0]+1);
+          break;
+        case "Duplo":
+          console.log(result.rows[0][1]+1);
+          break;
+        case "Semanal":
+          console.log(result.rows[0][2]+1);
+          break;
+        case "Mensal":
+          data2 = [0, 0, 0, 1, idTicket];
+          break;
+        default:
+          break;
+      }
+      console.log(result.rows);
+      this.connection.commit();   
+      return result.rows;
     } catch(err) {
       console.error(err);
     }
