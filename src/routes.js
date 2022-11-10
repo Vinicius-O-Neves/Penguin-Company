@@ -56,11 +56,11 @@ app.post('/rechargeCard', async(req, res) => {
     idTicket = req.body["pass_number"]
     console.log(req.body);
 
-    res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
-
     rechargeUser = await database.checkUserId(
         idTicket
     );
+    
+    res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
 });
 
 app.post('/rechargeVoucher', async(req, res) => {

@@ -72,10 +72,12 @@ class DB {
       const sqlCommand = "SELECT * FROM TICKET_USER WHERE ID_TICKET_USER = " + "(:0)";
       const data = [idTicket];
       let result = await this.connection.execute(sqlCommand, data);
+      /*if (result.rows.length === 0) {
+        throw "Número inválido";
+      } */
       
-      console.log(result.rowsAffected);
-      console.log(sqlCommand, data);
-      console.log(result)
+      console.log(result.rows);
+      
       this.connection.commit();   
       return result.rows;
     } catch(err) {
@@ -104,29 +106,37 @@ class DB {
   async addAmount (idTicket, typeOfTicket) {
     try {
       const sqlCommandSelectTicketAmount = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";
+      let sqlCommandUpdate;
       const data = [idTicket];
-      let data2;
+      let data2, result2;
       let result = await this.connection.execute(sqlCommandSelectTicketAmount, data);
 
       switch (typeOfTicket) {
         case "Único":
-          console.log(result.rows[0][0]+1);
+          data2 = result.rows[0][0]+1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET UNIQUE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         case "Duplo":
-          console.log(result.rows[0][1]+1);
+          data2 = result.rows[0][1]+1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET DOUBLE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         case "Semanal":
-          console.log(result.rows[0][2]+1);
+          data2 = result.rows[0][2]+1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         case "Mensal":
-          data2 = [0, 0, 0, 1, idTicket];
+          data2 = result.rows[0][3]+1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         default:
           break;
       }
-      console.log(result.rows);
+
+      console.log(sqlCommandUpdate,data2);
+      result2 = await this.connection.execute(sqlCommandUpdate);
+      console.log(result2.rows);
       this.connection.commit();   
-      return result.rows;
+      return result2.rows;
     } catch(err) {
       console.error(err);
     }
