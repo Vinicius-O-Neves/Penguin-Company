@@ -48,7 +48,7 @@
 
                                             <div>
                                                 <label for="tipo">
-                                                    <select id="tipo" name="type">
+                                                    <select id="tipo" name="type" onchange="select(this)">
                                                         <option value="Único">Bilhete Único</option>
                                                         <option value="Duplo">Bilhete Duplo</option>
                                                         <option value="Semanal">Bilhete Semanal</option>
@@ -83,7 +83,7 @@
                                     <div class="section">
                                         <div class="info">
                                             <p>Info:</p>
-                                            <p>
+                                            <p id="textinfo">
                                                 Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, 
                                                 e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, 
                                                 por um período de 40 minutos. 
@@ -121,5 +121,6 @@
 
         <script src="/customFooter.js" type="module"></script>
         <script src="/mobileNavbar.js"></script>
+        <script src="/rechargeCardScreen.js" defer></script>
     </body>
 </html>

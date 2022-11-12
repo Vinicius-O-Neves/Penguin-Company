@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Comprar Ticket</title>
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="/rechargeScreen.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="/rechargeScreen.js"></script>-->
 
 		<link rel="stylesheet" href="/header.css">
 		<link rel="stylesheet" href="/fonts.css">
@@ -45,7 +45,7 @@
                             <div class="recharged_row_1">
                                 <div class="element_col left_col">
                                     <p>Hora e data da compra</p>
-                                    <p>12:36 - 21/06/2022</p>
+                                    <p id="data" class = "datetime">12:36 - 21/06/2022</p>
                                 </div>
                                 <div class="element_col right_col">
                                     <p>Local de Utilização</p>
@@ -64,9 +64,9 @@
                                 <p>Modalidade</p>
                                 </div>
                                 <div class="element_col right_col">
-                                <p>xxxxxxxxxxxxxx</p>
-                                <p>Bilhete único</p>
-                                <p>Tradicional</p>
+                                <p id="pass_code" class="pass_number">xxxxxxxxxxxxxx</p>
+                                <p id="tipo" class="type">Bilhete único</p>
+                                <p id="modalidade" class="modality"></p>
                                 </div>
                         </div>
                     </div>

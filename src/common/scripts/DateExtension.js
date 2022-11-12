@@ -24,4 +24,4 @@ class DateExtension {
       }
 }
 
-module.exports = DateExtension
+module.exports = DateExtension;

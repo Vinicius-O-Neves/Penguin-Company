@@ -35,11 +35,14 @@ class NodeConfiguration {
 
         /* Paginas Recarga*/
         app.use(express.static(__dirname + '/pages/recharge/searchCardScreen/styles'));
+        app.use(express.static(__dirname + '/pages/recharge/searchCardScreen/scripts'));
         app.use(express.static(__dirname + '/pages/recharge/searchCardScreen/public'));
 
-        app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/styles'));
-
         app.use(express.static(__dirname + '/pages/recharge/rechargeCardScreen/styles'));
+        app.use(express.static(__dirname + '/pages/recharge/rechargeCardScreen/scripts'));
+
+        app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/styles'));
+        app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/scripts'));
         /* -------------------------------------------------------------------------------------------- */
 
 

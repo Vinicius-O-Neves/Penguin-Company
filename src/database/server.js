@@ -72,9 +72,10 @@ class DB {
       const sqlCommand = "SELECT * FROM TICKET_USER WHERE ID_TICKET_USER = " + "(:0)";
       const data = [idTicket];
       let result = await this.connection.execute(sqlCommand, data);
-      /*if (result.rows.length === 0) {
-        throw "Número inválido";
-      } */
+
+      if (result.rows.length === 0) {
+        result.rows = 0;
+      }
       
       console.log(result.rows);
       
@@ -142,6 +143,21 @@ class DB {
     }
   }
 
+  async selectRecharge (idRecharge) {
+    try {
+      const sqlCommand = "SELECT * FROM RECHARGE WHERE ID_RECHARGE = " + "(:0)";
+      const data = [idRecharge];
+      let result = await this.connection.execute(sqlCommand, data);
+    
+
+      console.log(result.rows);
+      
+      this.connection.commit();   
+      return result.rows;
+    } catch(err) {
+      console.error(err);
+    }
+  }
 }
 
 module.exports = DB;

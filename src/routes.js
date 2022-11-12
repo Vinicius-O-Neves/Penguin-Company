@@ -6,12 +6,12 @@ const nodeConfiguration = require('./nodeConfiguration.js');
 const app = new nodeConfiguration().init();
 
 const DB = require('./database/server.js');
-const rechargeId = require('./pages/recharge/searchCardScreen/scripts/searchCardScreen.js');
 const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
 var rechargeUser;
-let userId, modality, type, date, idTicket;
+let userId, date, idTicket, type;
+var modality;
 
 app.get('/buy', (req, res) => {
     res.sendFile(__dirname + '/pages/purchase/buyScreen/index.html');
@@ -60,16 +60,27 @@ app.post('/rechargeCard', async(req, res) => {
         idTicket
     );
     
-    res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
+    if (rechargeUser==0){
+        var http = require('http');
+        http.get('/searchCard',function(req,res){  
+            res.redirect('localhost:5500/searchCard');
+        })
+    } else {
+        res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
+    }
 });
 
-app.post('/rechargeVoucher', async(req, res) => {
+
+
+app.post('/rechargeVoucher', async(req, res) => { 
     let dateExtension = new DateExtension();
     let rechargeId = new RechargeId().rechargeId();
     date = String(dateExtension.getDatetime());
     type = req.body["type"];
 
     res.sendFile(__dirname + '/pages/recharge/rechargeScreen/rechargeVoucher.html');
+    console.log(date, rechargeUser[0][0],type); 
+  
     await database.rechargeUserTicket(
         rechargeId,
         date,
