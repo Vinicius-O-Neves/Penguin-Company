@@ -43,6 +43,8 @@ class NodeConfiguration {
 
         app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/styles'));
         app.use(express.static(__dirname + '/pages/recharge/rechargeScreen/scripts'));
+
+        app.use(express.static(__dirname + '/pages/recharge/successRecharge/styles'));
         /* -------------------------------------------------------------------------------------------- */
 
 

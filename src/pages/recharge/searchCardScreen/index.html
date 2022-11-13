@@ -5,8 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Procurar Cartão para Recarga</title>
-        <!--<script src="../../../database/server.js" type="module"></script>
-        <script data-main="../../../database/server.js" src="/searchCardScreen.js"></script>-->
+        <script src="/searchCardScreen.js"></script>
         <link rel="stylesheet" href="/header.css">
         <link rel="stylesheet" href="/fonts.css">
         <link rel="stylesheet" href="/searchCardScreen.css">
@@ -48,7 +47,7 @@
                                     maxlength="6"
                                     required>
                                 <p class="txt_search_fail" id="error">Cartão não encontrado. Tente Novamente</p>
-                                <button class="search" type="submit">
+                                <button class="search" type="submit" onclick="idValid()">
                                     <li class="btn_search_pass">Procurar cartão</a></li>
                                     <img class="btn_search_pass" src="/arrow_right.svg">
                                 </button>

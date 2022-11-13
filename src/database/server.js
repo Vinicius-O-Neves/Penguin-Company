@@ -73,8 +73,16 @@ class DB {
       const data = [idTicket];
       let result = await this.connection.execute(sqlCommand, data);
 
+      if (typeof localStorage==="undefined" || localStorage===null) {
+        var localStorage = require('node-localstorage').LocalStorage;
+        localStorage = new localStorage('../database')
+      }
+
       if (result.rows.length === 0) {
         result.rows = 0;
+        localStorage.setItem("idValid",false);
+      } else {
+        localStorage.setItem("idValid",true);
       }
       
       console.log(result.rows);

@@ -10,7 +10,7 @@ const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
 var rechargeUser;
-let userId, date, idTicket, type;
+let userId, date, idTicket, type, amountSpend;
 var modality;
 
 app.get('/buy', (req, res) => {
@@ -23,6 +23,8 @@ app.post('/rules', async (req, res) => {
     modality = req.body["modality"];
     date = dateExtension.getDate();
     type = req.body["type"];
+    amountSpend = new TotalPrice()
+    console.log(userId,date,2,modality);
 
     res.sendFile(__dirname + '/pages/purchase/rulesScreen/index.html');
 
@@ -61,10 +63,7 @@ app.post('/rechargeCard', async(req, res) => {
     );
     
     if (rechargeUser==0){
-        var http = require('http');
-        http.get('/searchCard',function(req,res){  
-            res.redirect('localhost:5500/searchCard');
-        })
+        /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
     } else {
         res.sendFile(__dirname + '/pages/recharge/rechargeCardScreen/rechargeCardScreen.html');
     }
@@ -72,13 +71,13 @@ app.post('/rechargeCard', async(req, res) => {
 
 
 
-app.post('/rechargeVoucher', async(req, res) => { 
+app.post('/successRecharge', async(req, res) => { 
     let dateExtension = new DateExtension();
     let rechargeId = new RechargeId().rechargeId();
     date = String(dateExtension.getDatetime());
     type = req.body["type"];
 
-    res.sendFile(__dirname + '/pages/recharge/rechargeScreen/rechargeVoucher.html');
+    res.sendFile(__dirname + '/pages/recharge/successRecharge/successRecharge.html');
     console.log(date, rechargeUser[0][0],type); 
   
     await database.rechargeUserTicket(
@@ -92,4 +91,13 @@ app.post('/rechargeVoucher', async(req, res) => {
         rechargeUser[0][0],
         type
     );
+});
+
+app.get('/rechargeVoucher', async(req, res) => {
+    res.sendFile(__dirname + '/pages/recharge/rechargeScreen/rechargeVoucher.html');
+});
+
+app.post('/rechargeVoucher', async(req, res) => {
+    console.log([date, rechargeUser[0][0], type]);
+    res.send([date, rechargeUser[0][0], type, rechargeUser[0][3]]);
 });

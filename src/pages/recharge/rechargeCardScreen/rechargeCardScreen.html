@@ -42,7 +42,7 @@
                         <div class="content">
                             <div class="big_section">
                                 <div class="line">
-                                    <form method="post" action="/rechargeVoucher">
+                                    <form method="post" action="/successRecharge">
                                         <div class="section">
                                             <p>Tipo de passe</p>
 
@@ -97,17 +97,15 @@
                                 </div>
                                 <div class="section">
                                     <div class="economy">
-                                        <p>ECONOMIA DE R$ 25,00</p>
+                                        <p id="economy_price">PREÇO DA RECARGA</p>
                                     </div>
                                     <div class="price_adult">
-                                        <p>R$ 42,95</p>
-                                        <p class="cut_text">R$ 60,90</p>
+                                        <p id="price">R$ 3.00</p>
+                                        <p class="cut_text"></p>
                                         <p>Por adulto, sem taxa</p>
                                     </div>
                                     <div class="price_total"> 
-                                        <p>1 adulto: R$ 42,95</p>
-                                        <p>Desconto: R$ 25,00</p>
-                                        <p>Total: R$ 42,95</p>               
+                                        <p id="total_price">Total: R$ 3.00</p>               
                                     </div>
                                 </div>
                             </div>
@@ -121,6 +119,6 @@
 
         <script src="/customFooter.js" type="module"></script>
         <script src="/mobileNavbar.js"></script>
-        <script src="/rechargeCardScreen.js" defer></script>
+        <script src="/rechargeCardScreen.js"></script>
     </body>
 </html>

@@ -2,13 +2,10 @@ const url = "http://localhost:5500/rechargeVoucher";
 function getUserRecharge() {
     axios.post(url)
         .then(response => {
-            var data = document.getElementById("data");
-            var passCode = document.getElementById("pass_code");
-            var tipo = document.getElementById("tipo");
-
-            data.setAttribute('modality', response.data[0]);
-            passCode.setAttribute('type', response.data[1]);
-            tipo.setAttribute('date', response.data[2]);
+            document.getElementById("data").innerHTML = response.data[0];
+            document.getElementById("pass_code").innerHTML = response.data[1];
+            document.getElementById("tipo").innerHTML = response.data[2];
+            document.getElementById("modalidade").innerHTML = response.data[3];
         })
         .catch(error => console.log(error))
 }

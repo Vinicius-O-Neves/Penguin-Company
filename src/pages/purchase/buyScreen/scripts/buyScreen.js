@@ -45,16 +45,52 @@ function getModality() {
     return modalityText;
   }
 
+var price=3, discount=0, totalPrice=3;
+
 function select(selfTag) {
     var x = selfTag.options[selfTag.selectedIndex].value;
-
+    
     if (x=="Único") {
-      document.getElementById("textinfo").innerText = "Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, por um período de 40 minutos."
+      document.getElementById("textinfo").innerHTML = "Bilhete Único - Para o Bilhete único o sistema irá debitar o crédito do bilhete, e dará ao usuário o direito utilizar o mesmo bilhete em quantos transportes quiser, por um período de 40 minutos."
+      price = 3;
     } else if (x=='Duplo') {
-      document.getElementById("textinfo").innerText = "Bilhete Duplo - Este tipo de bilhete pode ser utilizado em dois períodos. Para cada período de utilização do Bilhete Duplo o usuário poderá utilizar o mesmo bilhete em quantos transportes quiser, por um período de 40 minutos."
+      document.getElementById("textinfo").innerHTML = "Bilhete Duplo - Este tipo de bilhete pode ser utilizado em dois períodos. Para cada período de utilização do Bilhete Duplo o usuário poderá utilizar o mesmo bilhete em quantos transportes quiser, por um período de 40 minutos."
+      price = 5;
     } else if (x=='Semanal') {
-      document.getElementById("textinfo").innerText = "Bilhete Semanal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 7 dias, contados apartir da primeira utilização do bilhete."
+      document.getElementById("textinfo").innerHTML = "Bilhete Semanal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 7 dias, contados apartir da primeira utilização do bilhete."
+      price = 20;
     } else if (x=='Mensal') {
-      document.getElementById("textinfo").innerText = "Bilhete Mensal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 30 dias, contados apartir da primeira utilização do bilhete."
+      document.getElementById("textinfo").innerHTML = "Bilhete Mensal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 30 dias, contados apartir da primeira utilização do bilhete."
+      price = 50;
     }
+    document.getElementById("price").innerHTML = "R$ "+price.toFixed(2);
+    document.getElementById("new_price").innerHTML = "R$ "+ (price*((100-discount)/100)).toFixed(2);
+    document.getElementById("total_price").innerHTML = "Total: R$ " + (price*((100-discount)/100)).toFixed(2);
+    document.getElementById("economy_price").innerHTML = "ECONOMIA DE R$ " + (price-(price*((100-discount)/100))).toFixed(2);
+    return x;
+  }
+
+  function selectModality(selfTag) {
+    var x = selfTag.options[selfTag.selectedIndex].value;
+
+    if (x=="Tradicional") {
+      discount = 0;
+      document.getElementById("discount").innerHTML = "";
+    } else if (x=='PCD') {
+      discount = 25;
+      document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+    } else if (x=='Idoso') {
+      discount = 25;
+      document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+    } else if (x=='Gestante') {
+      discount = 50;
+      document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+    } else if (x=='Estudante') {
+      discount = 50;
+      document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+    }
+    document.getElementById("total_price").innerHTML = "Total: R$ " + price*((100-discount)/100);
+    document.getElementById("new_price").innerHTML = "R$ "+ price*((100-discount)/100);
+    document.getElementById("economy_price").innerHTML = "ECONOMIA DE R$ " + (price-(price*((100-discount)/100)));
+    return x;
   }

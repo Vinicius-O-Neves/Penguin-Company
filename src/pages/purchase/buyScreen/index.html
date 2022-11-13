@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/fonts.css">
         <link rel="stylesheet" href="/buy_section.css">
 	</head>
-    <body>
+    <body onload="totalPrice()">
         <header>
 			<nav>
 				<a class="logo" href="/">Penguin-Company</a>
@@ -59,7 +59,7 @@
                                             <p>Modalidade de passe</p>
                                             <div>
                                                 <label for="modalidade">
-                                                    <select id="modalidade" name="modality" required>
+                                                    <select id="modalidade" name="modality" onchange="selectModality(this)" required>
                                                         <option value="Tradicional">Tradicional</option>
                                                         <option value="PCD">PCD</option>
                                                         <option value="Idoso">Idoso(a)</option>
@@ -99,7 +99,7 @@
                                 </form>
                                 
                                 <div class="section">
-                                    <p>Já possui um passe? <a href="/src/pages/recharge/searchCardScreen/index.html">Recarregue-o clicando aqui.</a></p>
+                                    <p>Já possui um passe? <a href="/searchCard">Recarregue-o clicando aqui.</a></p>
                                 </div>
                             </div>
                         
@@ -119,17 +119,17 @@
                                 
                                     <div class="section">
                                         <div class="economy">
-                                            <p>ECONOMIA DE R$ 25,00</p>
+                                            <p id="economy_price">ECONOMIA DE R$ 0.00</p>
                                         </div>
                                         <div class="price_adult">
-                                            <p>R$ 42,95</p>
-                                            <p class="cut_text">R$ 60,90</p>
+                                            <p id="new_price">R$ 3.00</p>
+                                            <p id="price" class="cut_text">R$ 3.00</p>
                                             <p>Por adulto, sem taxa</p>
                                         </div>
                                         <div class="price_total"> 
-                                            <p>1 adulto: R$ 42,95</p>
-                                            <p>Desconto: R$ 25,00</p>
-                                            <p>Total: R$ 42,95</p>               
+                                            <p></p>
+                                            <p id="discount"></p>
+                                            <p id="total_price" name="price">Total: R$ 3.00</p>               
                                         </div>
                                     </div> 
                                 </div>

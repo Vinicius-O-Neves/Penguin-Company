@@ -16,8 +16,14 @@ class RechargeId {
     }
 }
 
-function setAction(form) {
-    form.action='/';
+function idValid () {
+    let isValid = localStorage.getItem("idValid");
+    
+    if (!isValid){
+        document.getElementById("error").style.display="flex";
+    } else {
+        document.getElementById("error").style.visibility="hidden";
+    }
 }
 
 function getPassNumberText(input) {
