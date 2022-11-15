@@ -67,6 +67,7 @@ class DB {
     } 
   }
 
+  
   async checkUserId (idTicket) {
     try {
       const sqlCommand = "SELECT * FROM TICKET_USER WHERE ID_TICKET_USER = " + "(:0)";
@@ -95,6 +96,7 @@ class DB {
 
   }
 
+  //Função para alimentar a tabela 'Recharge'
   async rechargeUserTicket (rechargeId, date, idTicketUser, type) {
     try {
       const sqlCommand = "INSERT INTO RECHARGE (ID_RECHARGE, DATE_HOUR_RECHARGE, USER_ID, TYPE_ID_RECHARGE) "+
@@ -112,6 +114,7 @@ class DB {
     }
   }
 
+  //Função para atualizar a tabela 'Ticket_Amount', somando 1 no tipo escolhido pelo usuário
   async addAmount (idTicket, typeOfTicket) {
     try {
       const sqlCommandSelectTicketAmount = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";

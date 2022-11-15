@@ -10,7 +10,7 @@ const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
 var rechargeUser;
-let userId, date, idTicket, type, amountSpend;
+let userId, date, idTicket, type;
 var modality;
 
 app.get('/buy', (req, res) => {
@@ -23,8 +23,6 @@ app.post('/rules', async (req, res) => {
     modality = req.body["modality"];
     date = dateExtension.getDate();
     type = req.body["type"];
-    amountSpend = new TotalPrice()
-    console.log(userId,date,2,modality);
 
     res.sendFile(__dirname + '/pages/purchase/rulesScreen/index.html');
 
@@ -98,6 +96,6 @@ app.get('/rechargeVoucher', async(req, res) => {
 });
 
 app.post('/rechargeVoucher', async(req, res) => {
-    console.log([date, rechargeUser[0][0], type]);
+    //data, id, tipo, modalidade
     res.send([date, rechargeUser[0][0], type, rechargeUser[0][3]]);
 });

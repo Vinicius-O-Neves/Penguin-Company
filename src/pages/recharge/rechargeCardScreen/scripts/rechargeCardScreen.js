@@ -15,7 +15,7 @@ function select(selfTag) {
     document.getElementById("textinfo").innerHTML = "Bilhete Mensal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 30 dias, contados apartir da primeira utilização do bilhete."
     price = 50;
   }
-  document.getElementById("price").innerHTML = "R$ "+price.toFixed(2);
-  document.getElementById("total_price").innerHTML = "Total: R$ "+price.toFixed(2);
+  document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");;
+  document.getElementById("total_price").innerHTML = "Total: R$ "+(price.toFixed(2)).replace(".", ",");;
   return x;
 }

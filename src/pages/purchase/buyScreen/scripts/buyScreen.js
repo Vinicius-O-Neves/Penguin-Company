@@ -63,10 +63,9 @@ function select(selfTag) {
       document.getElementById("textinfo").innerHTML = "Bilhete Mensal - Este tipo de bilhete dará ao usuário o direito de utilizar o transporte público quantas vezes quiser durante o período de 30 dias, contados apartir da primeira utilização do bilhete."
       price = 50;
     }
-    document.getElementById("price").innerHTML = "R$ "+price.toFixed(2);
-    document.getElementById("new_price").innerHTML = "R$ "+ (price*((100-discount)/100)).toFixed(2);
-    document.getElementById("total_price").innerHTML = "Total: R$ " + (price*((100-discount)/100)).toFixed(2);
-    document.getElementById("economy_price").innerHTML = "ECONOMIA DE R$ " + (price-(price*((100-discount)/100))).toFixed(2);
+    document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");
+    document.getElementById("new_price").innerHTML = "R$ "+ ((price*((100-discount)/100)).toFixed(2)).replace(".", ",");
+    document.getElementById("total_price").innerHTML = "Total: R$ " + ((price*((100-discount)/100)).toFixed(2)).replace(".", ",");
     return x;
   }
 
@@ -76,21 +75,25 @@ function select(selfTag) {
     if (x=="Tradicional") {
       discount = 0;
       document.getElementById("discount").innerHTML = "";
+      document.getElementById("price").innerHTML = ""
     } else if (x=='PCD') {
       discount = 25;
       document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+      document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");
     } else if (x=='Idoso') {
       discount = 25;
       document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+      document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");
     } else if (x=='Gestante') {
       discount = 50;
       document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+      document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");
     } else if (x=='Estudante') {
       discount = 50;
       document.getElementById("discount").innerHTML = "Desconto: " + discount+"%";
+      document.getElementById("price").innerHTML = "R$ "+(price.toFixed(2)).replace(".", ",");
     }
-    document.getElementById("total_price").innerHTML = "Total: R$ " + price*((100-discount)/100);
-    document.getElementById("new_price").innerHTML = "R$ "+ price*((100-discount)/100);
-    document.getElementById("economy_price").innerHTML = "ECONOMIA DE R$ " + (price-(price*((100-discount)/100)));
+    document.getElementById("total_price").innerHTML = "Total: R$ " + (price*((100-discount)/100)).toFixed(2).replace(".", ",");
+    document.getElementById("new_price").innerHTML = "R$ "+ (price*((100-discount)/100)).toFixed(2).replace(".", ",");
     return x;
   }
