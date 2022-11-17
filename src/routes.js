@@ -9,7 +9,7 @@ const DB = require('./database/server.js');
 const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
-var rechargeUser;
+var rechargeUser, amountTicket;
 let userId, date, idTicket, type;
 var modality;
 
@@ -98,4 +98,35 @@ app.get('/rechargeVoucher', async(req, res) => {
 app.post('/rechargeVoucher', async(req, res) => {
     //data, id, tipo, modalidade
     res.send([date, rechargeUser[0][0], type, rechargeUser[0][3]]);
+});
+
+
+
+app.get('/validar', (req, res) => {
+    res.sendFile(__dirname + '/pages/usage/searchCardUsage/index.html');
+});
+
+app.post('/usage', async(req, res) => {
+    res.sendFile(__dirname + '/pages/usage/usageScreen/index.html');
+    idTicket = req.body["pass_number"];
+    console.log(idTicket);
+
+    rechargeUser = await database.checkUserId(
+        idTicket
+    );
+    amountTicket = await database.selectAmount(
+        idTicket
+    );
+});
+
+app.get('/usage', (req, res) => {
+    
+
+    console.log(amountTicket);
+    
+    if (rechargeUser==0){
+        /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
+    } else {
+        res.send([amountTicket[0][0],amountTicket[0][1],amountTicket[0][2],amountTicket[0][3]]);
+    };
 });

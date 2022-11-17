@@ -154,10 +154,10 @@ class DB {
     }
   }
 
-  async selectRecharge (idRecharge) {
+  async selectAmount (idTicket) {
     try {
-      const sqlCommand = "SELECT * FROM RECHARGE WHERE ID_RECHARGE = " + "(:0)";
-      const data = [idRecharge];
+      const sqlCommand = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";
+      const data = [idTicket];
       let result = await this.connection.execute(sqlCommand, data);
     
 

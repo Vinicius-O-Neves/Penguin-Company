@@ -47,6 +47,14 @@ class NodeConfiguration {
         app.use(express.static(__dirname + '/pages/recharge/successRecharge/styles'));
         /* -------------------------------------------------------------------------------------------- */
 
+        /* Paginas Utilização*/
+        app.use(express.static(__dirname + '/pages/usage/searchCardUsage/styles'));
+        app.use(express.static(__dirname + '/pages/usage/searchCardUsage/scripts'));
+        app.use(express.static(__dirname + '/pages/usage/searchCardUsage/public'));
+
+        app.use(express.static(__dirname + '/pages/usage/usageScreen/styles'));
+        app.use(express.static(__dirname + '/pages/usage/usageScreen/scripts'));
+
 
         app.listen(5500, () => {
             console.log("servidor rodando\n");

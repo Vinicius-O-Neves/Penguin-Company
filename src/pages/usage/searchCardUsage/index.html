@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Procurar Cartão para Validar</title>
+        <script src="/searchCardUsage.js"></script>
+        <link rel="stylesheet" href="/header.css">
+        <link rel="stylesheet" href="/fonts.css">
+        <link rel="stylesheet" href="/searchCardUsage.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="logo" href="/">Penguin-Company</a>
+                <div class="mobile-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/historico">Historico</a></li>
+                    <li><a href="/buy">Comprar</a></li>
+                    <li><a href="/validar">Validar</a></li>
+                    <li><a href="/searchCard">Recarregar</a></li>
+                    <li><a class="prices" href="/preços">Preços</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="search_card_container">
+                        <img class="search_item card_example" src="/Cartão_Bilhete_Urbano_Exemplo.svg">
+                        <div class="search_card_section search_item">
+                            <form id="form" method="post" action="/usage">
+                                <h1>Número do cartão</h1>
+                                <input 
+                                    id="pass_number" 
+                                    name="pass_number" 
+                                    type="text" 
+                                    placeholder="# xxxxxx" 
+                                    onkeyup="getPassNumberText(this)"
+                                    maxlength="6"
+                                    required>
+                                <p class="txt_search_fail" id="error">Cartão não encontrado. Tente Novamente</p>
+                                <button class="search" type="submit" onclick="idValid()">
+                                    <li class="btn_search_pass">Procurar cartão</a></li>
+                                    <img class="btn_search_pass" src="/arrow_right.svg">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <custom-footer></custom-footer>
+        </div>
+
+        <script src="/customFooter.js" type="module"></script>
+        <script src="/mobileNavbar.js"></script>
+        
+    </body>
+</html>
