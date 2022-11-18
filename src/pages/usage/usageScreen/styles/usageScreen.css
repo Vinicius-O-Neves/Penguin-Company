@@ -18,6 +18,10 @@ h1, p {
     font-family: 'Jost', sans-serif;
 }
 
+p {
+    display: flex;
+}
+
 button {
     margin: 25px;
     border-radius: 10px;
@@ -26,7 +30,7 @@ button {
     background-color: transparent;
     font-size: 1.2rem;
     font-weight: 500;
-    width:150px;
+    width:175px;
     height: 100px;
     color: white;
     border: 2px solid white;
@@ -77,5 +81,8 @@ button:hover {
     float: left;
 }
 
-
-
+.confirm {
+    width:150px;
+    height: 50px;
+    border-radius: 45px;
+}
