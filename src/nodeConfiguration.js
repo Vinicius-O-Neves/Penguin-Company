@@ -55,6 +55,9 @@ class NodeConfiguration {
         app.use(express.static(__dirname + '/pages/usage/usageScreen/styles'));
         app.use(express.static(__dirname + '/pages/usage/usageScreen/scripts'));
 
+        app.use(express.static(__dirname + '/pages/usage/validatedTicketScreen/styles'));
+        app.use(express.static(__dirname + '/pages/usage/validatedTicketScreen/scripts'));
+
 
         app.listen(5500, () => {
             console.log("servidor rodando\n");

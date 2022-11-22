@@ -51,6 +51,20 @@ h1 {
     font-weight: bold;
 }
 
+button {
+    background-color:transparent;
+    color: white;
+    border-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    transition-duration: 0.5s;
+    opacity: 0.7;
+}
+
 p {
     padding-left: 50px;
     padding-right: 50px;
@@ -101,6 +115,7 @@ img.btn_back {
 
 .btn_generate_pass{
     float: left;
+    margin-left: 5px;
 }
 
 img.btn_generate_pass {

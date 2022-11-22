@@ -22,7 +22,7 @@ p {
     display: flex;
 }
 
-button {
+button, .p_option {
     margin: 25px;
     border-radius: 10px;
     transition-duration: 0.5s;
@@ -31,13 +31,22 @@ button {
     font-size: 1.2rem;
     font-weight: 500;
     width:175px;
-    height: 100px;
+    padding: 5px;
     color: white;
     border: 2px solid white;
+    text-align: center;
 }
 
+select {
+    visibility: hidden;
+}
 
-button:hover {
+.txt_search_fail {
+    color: red;
+    display: none;
+}
+
+.p_option:hover {
     transition-duration: 0.5s;
     opacity: 0.5;
 }
@@ -78,11 +87,11 @@ button:hover {
 }
 
 .content {
-    float: left;
+    display: table-cell;
 }
 
 .confirm {
-    width:150px;
-    height: 50px;
+    width:175px;
+    padding: 5px;
     border-radius: 45px;
 }

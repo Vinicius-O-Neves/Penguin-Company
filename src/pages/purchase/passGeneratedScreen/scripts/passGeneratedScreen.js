@@ -1,6 +1,6 @@
 const url = "http://localhost:5500/ticketGenerenated";
 function getUserTicket() {
-    axios.post(url)
+    axios.get(url)
         .then(response => {
             var backCard = document.getElementById("back_card");
             var frontCard = document.getElementById("front_card");

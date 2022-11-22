@@ -4,7 +4,7 @@ var db = db
 
 var ticketId = "";
 
-class RechargeId {
+class UsageId {
     rechargeId() {
         var x = Math.floor(Math.random() * 999999) + 1;
         return x;
@@ -39,4 +39,4 @@ function getTicketUserInfo(id) {
 
 
 
-module.exports = RechargeId;
+module.exports = UsageId;

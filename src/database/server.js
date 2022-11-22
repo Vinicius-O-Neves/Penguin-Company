@@ -169,6 +169,88 @@ class DB {
       console.error(err);
     }
   }
+
+  async UsingUserTicket (usageId, type, date, idTicketUser) {
+    try {
+      const sqlCommand = "INSERT INTO TICKET_USING (ID_TICKET_USING, TYPE_TICKET_USING, DATE_HOUR_TICKET_USING, USER_ID) "+
+      "VALUES (:0, :1, :2, :3)";
+      const data = [usageId, type, date, idTicketUser];
+
+      let result = await this.connection.execute(sqlCommand,data);
+      
+      console.log(result.rowsAffected);
+      console.log(sqlCommand,data);
+
+      this.connection.commit();   
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async subtractAmount (idTicket, typeOfTicket) {
+    try {
+      const sqlCommandSelectTicketAmount = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";
+      let sqlCommandUpdate;
+      const data = [idTicket];
+      let data2, result2;
+      let result = await this.connection.execute(sqlCommandSelectTicketAmount, data);
+      var lastTicketUsage = await this.getLastTicketUsage(idTicket,typeOfTicket);
+      lastTicketUsage=lastTicketUsage.substring(13,21).split(":");
+      var hour = lastTicketUsage[0]*3600;
+      var minute = lastTicketUsage[1]*60;
+      var secondsLastUsage = hour+minute+lastTicketUsage[2]*1;
+      console.log(secondsLastUsage);
+
+      switch (typeOfTicket) {
+        case "Único":
+          data2 = result.rows[0][0]-1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET UNIQUE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+          break;
+        case "Duplo":
+          data2 = result.rows[0][1]-1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET DOUBLE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+          break;
+        case "Semanal":
+          data2 = result.rows[0][2]-1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+          break;
+        case "Mensal":
+          data2 = result.rows[0][3]-1
+          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+          break;
+        default:
+          break;
+      }
+
+      console.log(sqlCommandUpdate,data2);
+      result2 = await this.connection.execute(sqlCommandUpdate);
+      console.log(result2.rows);
+      this.connection.commit();   
+      return result2.rows;
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async getLastTicketUsage (idTicket, typeOfTicket) {
+    try {
+      var sqlCommandGetLastTicketUsage = "SELECT DATE_HOUR_TICKET_USING FROM TICKET_USING "+
+      "WHERE USER_ID = " + "(:0)" + " AND TYPE_TICKET_USING = "+"(:1)"+
+      " ORDER BY DATE_HOUR_TICKET_USING DESC";
+                                        
+                                        
+      var data = [idTicket,typeOfTicket];
+      let result = await this.connection.execute(sqlCommandGetLastTicketUsage,data);
+
+      console.log(result.rowsAffected);
+      console.log(sqlCommandGetLastTicketUsage,data);
+
+      this.connection.commit(); 
+      return result.rows[0][0];
+    } catch(err) {
+      console.error(err);
+    }
+  }
 }
 
 module.exports = DB;

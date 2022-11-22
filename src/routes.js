@@ -18,13 +18,21 @@ app.get('/buy', (req, res) => {
 });
 
 app.post('/rules', async (req, res) => {
-    let dateExtension = new DateExtension();
+    
     userId = new GenerationExtension().makeId(6);
     modality = req.body["modality"];
-    date = dateExtension.getDate();
+    
     type = req.body["type"];
 
     res.sendFile(__dirname + '/pages/purchase/rulesScreen/index.html');
+
+    
+})
+
+app.post('/ticketGenerenated', async(req, res) => {
+    let dateExtension = new DateExtension();
+    date = String(dateExtension.getDatetime());
+    res.sendFile(__dirname + '/pages/purchase/passGeneratedScreen/index.html');
 
     await database.createUserTicket(
         userId,
@@ -36,13 +44,9 @@ app.post('/rules', async (req, res) => {
         userId,
         type
     );
-})
-
-app.get('/ticketGenerenated', async(req, res) => {
-    res.sendFile(__dirname + '/pages/purchase/passGeneratedScreen/index.html');
 });
 
-app.post('/ticketGenerenated', async(req, res) => {
+app.get('/ticketGenerenated', async(req, res) => {
     res.send([modality, type, date, userId]);
 });
 
@@ -107,7 +111,7 @@ app.get('/validar', (req, res) => {
 });
 
 app.post('/usage', async(req, res) => {
-    res.sendFile(__dirname + '/pages/usage/usageScreen/index.html');
+    
     idTicket = req.body["pass_number"];
     console.log(idTicket);
 
@@ -117,16 +121,43 @@ app.post('/usage', async(req, res) => {
     amountTicket = await database.selectAmount(
         idTicket
     );
+
+    if (rechargeUser==0){
+        /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
+    } else {
+        res.sendFile(__dirname + '/pages/usage/usageScreen/index.html');
+    };
 });
 
 app.get('/usage', (req, res) => {
-    
-
-    console.log(amountTicket);
-    
     if (rechargeUser==0){
         /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
     } else {
         res.send([amountTicket[0][0],amountTicket[0][1],amountTicket[0][2],amountTicket[0][3]]);
     };
+});
+
+app.post('/validated', async(req, res) => {
+    res.sendFile(__dirname + '/pages/usage/validatedTicketScreen/validatedTicketScreen.html');
+    type = req.body["selectedType"];
+    let rechargeId = new RechargeId().rechargeId();
+    let dateExtension = new DateExtension();
+    date = String(dateExtension.getDatetime());
+    console.log(rechargeId, type, date, rechargeUser[0][0]);
+
+    await database.UsingUserTicket(
+        rechargeId,
+        type,
+        date,
+        rechargeUser[0][0]
+    );
+
+    await database.subtractAmount(
+        rechargeUser[0][0],
+        type
+    );
+});
+
+app.get('/validated', (req, res) => {
+    res.send([rechargeUser[0][0],type]); 
 });

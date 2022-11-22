@@ -7,7 +7,8 @@
 		<title>Comprar Ticket</title>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="/usageScreen.js" defer></script>
+		<script src="/usageScreen.js"></script>
+		<script src="/usageScreenFunc.js" defer></script>
 
 		<link rel="stylesheet" href="/header.css">
 		<link rel="stylesheet" href="/fonts.css">
@@ -39,17 +40,29 @@
                     <div class="rectangle">
 
                         <h1>Como deseja utilizar o seu passe?</h1>
-
-                        <div class="content">
-                            <button class="unique" id="unico">Bilhete Único</button>
-                            
-                            <button class="double" id="duplo">Bilhete Duplo</button>
-                            
-                            <button class="weekly" id="semanal">Bilhete Semanal</button>
-                            
-                            <button class="monthly" id="mensal">Bilhete Mensal</button>    
-                        </div>
-                        <button class="confirm" onclick="teste()">Validar passe</button>
+						<form method="post" action="/validated">
+							<div class="content" name="type">
+								<p class="unique p_option" id="unico">Bilhete Único</p>
+								
+								<p class="double p_option" id="duplo">Bilhete Duplo</p>
+								
+								<p class="weekly p_option" id="semanal">Bilhete Semanal</p>
+								
+								<p class="monthly p_option" id="mensal">Bilhete Mensal</p>    
+							</div>
+							<p class="txt_search_fail" id="error">Você não possui nenhum ticket disponível</p>
+							<button class="confirm" id="buttonConfirm" type="submit" onclick="teste()">Validar passe</button>
+							<label for="tipo">
+								<select id="tipo" name="selectedType">
+									<option value="Único">unico</option>
+									<option value="Duplo">duplo</option>
+									<option value="Semanal">semanal</option>
+									<option value="Mensal">mensal</option>
+								</select>
+							</label>
+						</form>
+						
+						
                     </div>
                 </div>
             </main>
