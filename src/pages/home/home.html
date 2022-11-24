@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="stylesheet" href="/src/common/components/header/styles/header.css">
+		<link rel="stylesheet" href="/src/common/styles/fonts.css">
+        <link rel="stylesheet" href="/src/pages/home/home.css">
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a class="logo" href="/">Penguin-Company</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/historico">Historico</a></li>
+					<li><a href="/comprar">Comprar</a></li>
+					<li><a href="/gerenciar">Gerenciar</a></li>
+					<li><a href="/recarregar">Recarregar</a></li>
+					<li><a class="prices" href="/preços">Preços</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div class="home">
+			<div class="home_container">
+				<li class="buyTicket"><a href="/compreSeuPasse">Compre o seu passe</a></li>
+				<li class="rechargeTicket"><a href="/recarregueSeuPasse">Recarregue o seu passe</a></li>
+			</div>
+		</div>
+
+		<div class="main_container">
+			<main>
+				<div class="primaryContainer">
+					<div>
+                    	<h1 class="h_1">Confie no Nome do Site</h1>
+                    	<p class="p_1">Somos reconhecidos como o maior e  melhor site para
+                        	comprar passagens<br> em toda Gotham. Realizar a busca é gratuito e fácil, 
+                        	e melhor ainda! <br> Conseguimos os passes mais baratos para as regiões disponíveis.
+                    	</p>
+					</div>
+					<div class="animation">	
+						<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+						<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gnHcVtSUYY.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>             
+					</div>
+                </div>
+				<div class="background">
+                	<div class="secondaryContainer">
+						<div>
+                    		<h1 class="h_2">Nossa História</h1>
+                    		<p class="p_2">Essa plataforma foi desenvolvida no ano de 2009 ao comando do prefeito <br> Oswald Chesterfield para que fosse facilitado o transporte na cidade de <br> Gotham para todos os habitantes de qualquer classe social.</p>
+						</div>	
+						<div>
+							<img src="/src/pages/home/image/pinguim-removebg-preview 3.svg" alt="">
+						</div>	
+					</div>
+					<div class="tertiaryContainer">
+						<div class="image2">
+							<img src="/src/pages/home/image/pinguim2-removebg-preview 1.svg" alt="">
+						</div>
+						<div>
+                    		<h2 class="h_3">
+                        		Nosso Propósito
+                    		</h2>
+                    		<p class="p_3">
+                        		O objetivo é facilitar a compra de passes para a utilização dos transportes <br> 
+                        		públicos disponibilizados generosamente à população e aos visitantes da <br> 
+                        		maravilosa Gotham City. <br>
+                        		<br>
+                        		Somente através do Nome do Site é possivel atualmente comprar os passes <br> 
+                        		únicos e duplos, além de regarregar o passe regarregável, pois assim <br> 
+                        		Oswald Chesterfield planejou para governar e cuidar da cidade a qual foi confiado.
+                    		</p>
+						</div>	
+					</div>
+				</div>	
+                <div class="seeMap">
+                    <h1 class="titleMap">Veja Gotham por cima</h1>
+                    <div class="map"></div>
+                </div>
+				<custom-footer></custom-footer>
+			</main>
+		</div>
+		
+		<script src="./components/frontCard/frontCard.js" type="module"></script>
+		<script src="./components/backCard/backCard.js" type="module"></script>
+		<script src="/src/common/components/footer/scripts/customFooter.js" type="module"></script>
+		<script src="/src/common/components/header/scripts/mobileNavbar.js"></script>
+	</body>
+</html>
