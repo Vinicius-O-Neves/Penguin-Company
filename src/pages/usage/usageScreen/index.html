@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Comprar Ticket</title>
+		<title>Validar passe</title>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="/usageScreen.js"></script>
@@ -40,28 +40,35 @@
                     <div class="rectangle">
 
                         <h1>Como deseja utilizar o seu passe?</h1>
-						<form method="post" action="/validated">
-							<div class="content" name="type">
-								<p class="unique p_option" id="unico">Bilhete Único</p>
-								
-								<p class="double p_option" id="duplo">Bilhete Duplo</p>
-								
-								<p class="weekly p_option" id="semanal">Bilhete Semanal</p>
-								
-								<p class="monthly p_option" id="mensal">Bilhete Mensal</p>    
-							</div>
-							<p class="txt_search_fail" id="error">Você não possui nenhum ticket disponível</p>
-							<button class="confirm" id="buttonConfirm" type="submit" onclick="teste()">Validar passe</button>
-							<label for="tipo">
-								<select id="tipo" name="selectedType">
-									<option value="Único">unico</option>
-									<option value="Duplo">duplo</option>
-									<option value="Semanal">semanal</option>
-									<option value="Mensal">mensal</option>
-								</select>
-							</label>
-						</form>
-						
+						<div class="center">
+							<form method="post" action="/validated">
+								<div class="content" name="type">
+									<p class="unique p_option" id="unico">Bilhete Único</p>
+									
+									<p class="double p_option" id="duplo">Bilhete Duplo</p>
+									
+									<p class="weekly p_option" id="semanal">Bilhete Semanal</p>
+									
+									<p class="monthly p_option" id="mensal">Bilhete Mensal</p>    
+								</div>
+								<p class="txt_search_fail" id="error">Você não possui nenhum ticket disponível</p>
+								<div class="btn_confirm_div">
+									<p id="ticket_being_used" class="pass_being_used">Um bilhete deste tipo está sendo utilizado no momento</p>
+								</div>
+								<div class="btn_confirm_div">
+									<button class="confirm" id="buttonConfirm" type="submit" onclick="canUse()">Validar passe</button>
+								</div>
+								<p id="textinfo" class="info"></p>
+								<label for="tipo">
+									<select id="tipo" name="selectedType" onchange="select(this)">
+										<option value="Único">unico</option>
+										<option value="Duplo">duplo</option>
+										<option value="Semanal">semanal</option>
+										<option value="Mensal">mensal</option>
+									</select>
+								</label>
+							</form>
+						</div>
 						
                     </div>
                 </div>

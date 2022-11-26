@@ -2,19 +2,19 @@ const url = "http://localhost:5500/usage";
 function getUserAmount() {
     axios.get(url)
         .then(response => { 
-            if (response.data[0]==0) {
+            if (response.data[0]<=0) {
                 document.getElementById("unico").style.display = 'none'
             } 
-            if (response.data[1]==0) {
+            if (response.data[1]<=0) {
                 document.getElementById("duplo").style.display = 'none'
             } 
-            if (response.data[2]==0) {
+            if (response.data[2]<=0) {
                 document.getElementById("semanal").style.display = 'none'
             } 
-            if (response.data[3]==0) {
+            if (response.data[3]<=0) {
                 document.getElementById("mensal").style.display = 'none'
             } 
-            if (response.data[0]==0 && response.data[1]==0 && response.data[2]==0 && response.data[3]==0) {
+            if (response.data[0]<=0 && response.data[1]<=0 && response.data[2]<=0 && response.data[3]<=0) {
                 document.getElementById("error").style.display = 'flex'
                 document.getElementById("buttonConfirm").style.display = 'none'
             }

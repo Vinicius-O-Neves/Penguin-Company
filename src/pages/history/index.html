@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Historico Ticket</title>
+        <script src="/src/database/server.js"></script>
+		<link rel="stylesheet" href="/header.css">
+		<link rel="stylesheet" href="/footer.css">
+		<link rel="stylesheet" href="/fonts.css">
+        <link rel="stylesheet" href="/history.css">
+	</head>
+    <body>
+        <header>
+			<nav>
+				<a class="logo" href="/">Penguin-Company</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/historico">Historico</a></li>
+					<li><a href="/buy">Comprar</a></li>
+					<li><a href="/validar">Validar</a></li>
+					<li><a href="/searchCard">Recarregar</a></li>
+					<li><a class="prices" href="/preços">Preços</a></li>
+				</ul>
+			</nav>
+		</header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="rectangle">
+
+                        <h1>Relatório de uso do cartão</h1><br>
+                        <div class="recharged_row_1">
+                            <div class="element_col left_col">
+                            <p>N. do cartão</p>
+                            <div class="history_table">
+                                <table border="4" align="center" bgcolor="#D9D9D9" bordercolor="#000000" width="60%" cellpadding="border-box" position="absolute">
+
+                                    <tr>
+                                        <th>Hora</th>
+                                        <th>Dia</th>
+                                        <th>Tipo de Passe</th>
+                                    </tr>
+                                    <tr>
+                                        <td>21:58</td>
+                                        <td>23/11/2022</td>
+                                        <td>Único</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            </div>
+                    
+                </div>
+                <custom-footer></custom-footer>
+            </main>
+        </div>
+
+        <script src="/customFooter.js" type="module"></script>
+        <script src="/mobileNavbar.js"></script>
+        <script src="/usageHistoryScreen.js"></script>
+    </body>
+</html>

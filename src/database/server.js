@@ -1,3 +1,5 @@
+const DateExtension = require('../common/scripts/DateExtension');
+
 class DB {
   constructor() {
     this.oracledb = require('oracledb');
@@ -42,7 +44,7 @@ class DB {
           data = [1, 0, 0, 0, idTicketUser];
           break;
         case "Duplo":
-          data = [0, 1, 0, 0, idTicketUser];
+          data = [0, 2, 0, 0, idTicketUser];
           break;
         case "Semanal":
           data = [0, 0, 1, 0, idTicketUser];
@@ -129,7 +131,7 @@ class DB {
           sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET UNIQUE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         case "Duplo":
-          data2 = result.rows[0][1]+1
+          data2 = result.rows[0][1]+2
           sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET DOUBLE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
           break;
         case "Semanal":
@@ -187,52 +189,106 @@ class DB {
     }
   }
 
-  async subtractAmount (idTicket, typeOfTicket) {
+  async canUse (idTicket,typeOfTicket,usageId) {
+    try {
+      var types = ["Único","Duplo","Semanal","Mensal"];
+      var lastTicketUsage = await this.getLastTicketUsage(idTicket,typeOfTicket,usageId);
+      var time=lastTicketUsage.substring(13,21).split(":");
+      var hour = time[0]*3600;
+      var minute = time[1]*60;
+      var secondsLastUsage = hour+minute+time[2]*1;
+
+      var dateNow = new DateExtension().getDatetime();
+      var timeNow = dateNow.substring(13,21).split(":");
+      var hourNow = timeNow[0]*3600;
+      var minuteNow = timeNow[1]*60;
+      var totalSecondsNow = hourNow+minuteNow+timeNow[2]*1;
+      var date=lastTicketUsage.substring(0,2);   
+
+      var code;
+
+      for (var i = 0; i<types.length;i++) {
+        if (types[i]=="Único" || types[i]=="Duplo") {
+          if (date==dateNow.substring(0,2) || hourNow>hour) {
+            if (totalSecondsNow-secondsLastUsage>=2400) { 
+              code = 1;
+            } else {
+              code = 0;
+            }
+          } else if (dateNow.substring(0,2)>date) {    
+              if (secondsLastUsage-totalSecondsNow>=2400 && hourNow<hour){
+                code = 1;
+              } else {
+                code = 0;
+                console.log(secondsLastUsage-totalSecondsNow);
+              }
+          }
+        }
+      }
+      console.log(code);
+      return code;
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async subtractAmount (idTicket, typeOfTicket, usageId) {
     try {
       const sqlCommandSelectTicketAmount = "SELECT * FROM TICKET_AMOUNT WHERE USER_ID = " + "(:0)";
       let sqlCommandUpdate;
       const data = [idTicket];
       let data2, result2;
       let result = await this.connection.execute(sqlCommandSelectTicketAmount, data);
-      var lastTicketUsage = await this.getLastTicketUsage(idTicket,typeOfTicket);
-      lastTicketUsage=lastTicketUsage.substring(13,21).split(":");
-      var hour = lastTicketUsage[0]*3600;
-      var minute = lastTicketUsage[1]*60;
-      var secondsLastUsage = hour+minute+lastTicketUsage[2]*1;
-      console.log(secondsLastUsage);
 
-      switch (typeOfTicket) {
-        case "Único":
-          data2 = result.rows[0][0]-1
-          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET UNIQUE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
-          break;
-        case "Duplo":
-          data2 = result.rows[0][1]-1
-          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET DOUBLE_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
-          break;
-        case "Semanal":
-          data2 = result.rows[0][2]-1
-          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
-          break;
-        case "Mensal":
-          data2 = result.rows[0][3]-1
-          sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
-          break;
-        default:
-          break;
+      var code = await this.canUse(idTicket,typeOfTicket,usageId); 
+      var dateNow = new DateExtension().getDatetime();
+
+      if (code==1) {
+        switch (typeOfTicket) {
+          case "Único":
+            data2 = [result.rows[0][0]-1,idTicket]
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET UNIQUE_TICKET = " + "(:0)" + " WHERE USER_ID = " + "(:1)";
+            this.UsingUserTicket(usageId, typeOfTicket, dateNow, idTicket);
+            result2 = await this.connection.execute(sqlCommandUpdate,data2);
+            break;
+          case "Duplo":
+            data2 = [result.rows[0][1]-1,idTicket]
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET DOUBLE_TICKET = " + "(:0)" + " WHERE USER_ID = " + "(:1)";
+            this.UsingUserTicket(usageId, typeOfTicket, dateNow, idTicket);     
+            result2 = await this.connection.execute(sqlCommandUpdate,data2);
+            break;
+          case "Semanal":
+            data2 = result.rows[0][2]-1
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+            break;
+          case "Mensal":
+            data2 = result.rows[0][3]-1
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+            break;
+          default:
+            break;
+        }
+      }
+    
+      if (typeof localStorage==="undefined" || localStorage===null) {
+        var localStorage = require('node-localstorage').LocalStorage;
+        localStorage = new localStorage('../database')
       }
 
-      console.log(sqlCommandUpdate,data2);
-      result2 = await this.connection.execute(sqlCommandUpdate);
-      console.log(result2.rows);
+      if (code == 0) {
+        localStorage.setItem("canUse",false);
+      } else {
+        localStorage.setItem("canUse",true);
+      }
+
       this.connection.commit();   
-      return result2.rows;
+      return code;
     } catch(err) {
       console.error(err);
     }
   }
 
-  async getLastTicketUsage (idTicket, typeOfTicket) {
+  async getLastTicketUsage (idTicket, typeOfTicket, usageId) {
     try {
       var sqlCommandGetLastTicketUsage = "SELECT DATE_HOUR_TICKET_USING FROM TICKET_USING "+
       "WHERE USER_ID = " + "(:0)" + " AND TYPE_TICKET_USING = "+"(:1)"+
@@ -244,6 +300,7 @@ class DB {
 
       console.log(result.rowsAffected);
       console.log(sqlCommandGetLastTicketUsage,data);
+      console.log(result.rows);
 
       this.connection.commit(); 
       return result.rows[0][0];

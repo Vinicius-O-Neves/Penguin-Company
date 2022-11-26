@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.home {
+    min-width: 320px;
+    max-width: 1500px;
+    margin: auto;
+    background-image: url("/Home_1.svg");
+    max-width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.home_container {
+    padding-top: 20%;
+    padding-bottom: 20%;
+    display: flex;
+    align-items: flex-end;
+    /*background: url("/Home_1.svg");*/
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buyTicket {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: 'Jost', sans-serif;;
+}
+
+.rechargeTicket {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 40px;
+    margin-left: 12%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: 40%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: 'Jost', sans-serif;;
+}
+
+main {
+    background-size: cover;
+    height: 100%;
+}
+
+.main_container {
+    min-width: 320px;
+    max-width: 1500px;
+    margin: auto;
+    background-color: lightgray;
+    max-width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.primaryContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 8%;
+}
+
+.animation{
+    padding-left: 13%;
+}
+
+.background {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(rgb(53, 53, 53), black);
+    width: auto;
+    height: fit-content;
+}
+
+.secondaryContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.tertiaryContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10%;
+}
+
+.image2 {
+    padding-right: 5%;
+}
+
+.h_1, .p_1 {
+    color: black;
+    font-family: 'Jost', sans-serif;
+}
+
+.h_1 {
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.p_1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.h_2, .p_2 {
+    color: white;
+    font-family: 'Jost', sans-serif;
+}
+
+.h_2 {
+
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.p_2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.h_3, .p_3 {
+    color: white;
+    font-family: 'Jost', sans-serif;
+}
+
+.h_3 {
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.p_3 {
+    font-size: 1.2rem;
+    font-weight: 500; 
+}
+
+.seeMap {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    background: lightgray;
+    width: auto;
+    height: fit-content;
+}
+
+.titleMap{
+    margin-top: 5%;
+    padding-left: 10%;
+    font-family: 'Jost', sans-serif;
+    font-size: 2rem;
+}
+
+.map {
+    background-image: url("/gotham _map_1.svg");
+    height: 610px;
+    width: 73%;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    margin-left: 15%;
+}

@@ -13,6 +13,10 @@ var rechargeUser, amountTicket;
 let userId, date, idTicket, type;
 var modality;
 
+app.get('/home', (req, res) => {
+    res.sendFile(__dirname + '/pages/home/home.html');
+});
+
 app.get('/buy', (req, res) => {
     res.sendFile(__dirname + '/pages/purchase/buyScreen/index.html');
 });
@@ -130,34 +134,48 @@ app.post('/usage', async(req, res) => {
 });
 
 app.get('/usage', (req, res) => {
-    if (rechargeUser==0){
-        /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
+    var localStorage;
+    if (typeof localStorage==="undefined" || localStorage===null) {
+        var localStorage = require('node-localstorage').LocalStorage;
+        localStorage = new localStorage('../database')
+      }
+
+    let canBeUsed = localStorage.getItem("canUse");
+
+    if (!canBeUsed){
+        /*res.sendFile(__dirname + '/pages/usage/usageScreen/index.html');*/
     } else {
         res.send([amountTicket[0][0],amountTicket[0][1],amountTicket[0][2],amountTicket[0][3]]);
     };
 });
 
+/*app.post('/validated', await database.subtractAmount(...) { successRedirect: '/validated', failureRedirect: '/usage', failureFlash: true}), (req, res) => { res.redirect('...') })*/
+
 app.post('/validated', async(req, res) => {
-    res.sendFile(__dirname + '/pages/usage/validatedTicketScreen/validatedTicketScreen.html');
+    
     type = req.body["selectedType"];
     let rechargeId = new RechargeId().rechargeId();
     let dateExtension = new DateExtension();
     date = String(dateExtension.getDatetime());
     console.log(rechargeId, type, date, rechargeUser[0][0]);
 
-    await database.UsingUserTicket(
-        rechargeId,
+    var usingTicket = await database.subtractAmount(
+        rechargeUser[0][0],
         type,
-        date,
-        rechargeUser[0][0]
+        rechargeId
     );
 
-    await database.subtractAmount(
-        rechargeUser[0][0],
-        type
-    );
+    if (usingTicket==0) {
+        /*res.redirect('/usage');*/
+    } else {
+        res.sendFile(__dirname + '/pages/usage/validatedTicketScreen/validatedTicketScreen.html');
+    }
 });
 
 app.get('/validated', (req, res) => {
     res.send([rechargeUser[0][0],type]); 
+});
+
+app.get('/historico', async(req, res) => {
+    res.sendFile(__dirname + '/pages/history/index.html');
 });
