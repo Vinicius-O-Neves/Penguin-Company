@@ -38,6 +38,7 @@ app.post('/rules', async (req, res) => {
     );
 })
 
+
 app.get('/ticketGenerenated', async(req, res) => {
     res.sendFile(__dirname + '/pages/purchase/passGeneratedScreen/index.html');
 });
@@ -130,3 +131,7 @@ app.get('/usage', (req, res) => {
         res.send([amountTicket[0][0],amountTicket[0][1],amountTicket[0][2],amountTicket[0][3]]);
     };
 });
+
+app.get('/historico', (req, res) => {
+    res.sendFile(__dirname + '/pages/history/historyRelatory/index.html')
+})

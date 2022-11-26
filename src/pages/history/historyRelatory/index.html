@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Historico do Cartão</title>
+
+        <link rel="stylesheet" href="/header.css">
+        <link rel="stylesheet" href="/fonts.css">
+        <link rel="stylesheet" href="/historyScreen.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="logo" href="/">Penguin-Company</a>
+                <div class="mobile-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/historico">Historico</a></li>
+                    <li><a href="/buy">Comprar</a></li>
+                    <li><a href="/validar">Validar</a></li>
+                    <li><a href="/searchCard">Recarregar</a></li>
+                    <li><a class="prices" href="/preços">Preços</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="main_container">
+            <main>
+                <div class="container">
+                    <div class="card_number_text">
+                        <h1>Relatório de uso do cartão </h1>
+                        <h1>#xxxx</h1>
+                    </div>
+
+                    <div class="history_section">
+                        <div class="history_content">
+                            <div class="options_section">
+                                <h3 class="filter_description">Filtrar por: </h3>
+
+                                <div class="types_radio_group">
+                                    <input 
+                                        type="radio" 
+                                        class="radio_btn_geral radio_btn" 
+                                        id="radio_btn_geral" 
+                                        name="myRadio" 
+                                        value="Geral" 
+                                        checked />
+                                    <label class="radio_btn_txt" for="radio_btn_geral">Geral</label>
+                
+                                    <input 
+                                        type="radio" 
+                                        class="radio_btn_use radio_btn" 
+                                        id="radio_btn_use"  
+                                        name="myRadio" 
+                                        value="Uso" />
+                                    <label class="radio_btn_txt" for="radio_btn_use">Uso</label>
+            
+                                    <input 
+                                        type="radio" 
+                                        class="radio_btn_recharge radio_btn" 
+                                        id="radio_btn_recharge" 
+                                        name="myRadio" 
+                                        value="Recarga"/>
+                                    <label class="radio_btn_txt" for="radio_btn_recharge">Recarga</label>
+                                </div>
+                            </div>
+        
+                            <div class="table_history">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Hora</th>
+                                            <th>Dia</th>
+                                            <th>Tipo</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>14:40:44</td>
+                                            <td>25/10/2022</td>
+                                            <td>Único</td>
+                                            <td>Recarga</td>
+                                        </tr>
+                                        <tr>
+                                            <td>14:50:30</td>
+                                            <td>25/10/2022</td>
+                                            <td>Único</td>
+                                            <td>Duplo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            <custom-footer></custom-footer>
+        </div>
+
+        <script src="/customFooter.js" type="module"></script>
+        <script src="/mobileNavbar.js"></script>
+        
+    </body>
+</html>

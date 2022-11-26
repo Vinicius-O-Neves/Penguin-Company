@@ -54,10 +54,16 @@ class NodeConfiguration {
 
         app.use(express.static(__dirname + '/pages/usage/usageScreen/styles'));
         app.use(express.static(__dirname + '/pages/usage/usageScreen/scripts'));
+        /* -------------------------------------------------------------------------------------------- */
 
+
+        /* Paginas Historico*/
+        app.use(express.static(__dirname + '/pages/history/historyRelatory/styles'));
+        app.use(express.static(__dirname + '/pages/history/historyRelatory/public/images'));
+        /* -------------------------------------------------------------------------------------------- */
 
         app.listen(5500, () => {
-            console.log("servidor rodando\n");
+            console.log("servidor rodando");
         });
 
         return app;
