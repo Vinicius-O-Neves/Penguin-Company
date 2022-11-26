@@ -177,5 +177,5 @@ app.get('/validated', (req, res) => {
 });
 
 app.get('/historico', async(req, res) => {
-    res.sendFile(__dirname + '/pages/history/index.html');
+    res.sendFile(__dirname + '/pages/history/historyCardScreen/historyCardScreen.html');
 });

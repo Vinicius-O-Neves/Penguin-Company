@@ -193,38 +193,77 @@ class DB {
     try {
       var types = ["Único","Duplo","Semanal","Mensal"];
       var lastTicketUsage = await this.getLastTicketUsage(idTicket,typeOfTicket,usageId);
-      var time=lastTicketUsage.substring(13,21).split(":");
-      var hour = time[0]*3600;
-      var minute = time[1]*60;
-      var secondsLastUsage = hour+minute+time[2]*1;
-
-      var dateNow = new DateExtension().getDatetime();
-      var timeNow = dateNow.substring(13,21).split(":");
-      var hourNow = timeNow[0]*3600;
-      var minuteNow = timeNow[1]*60;
-      var totalSecondsNow = hourNow+minuteNow+timeNow[2]*1;
-      var date=lastTicketUsage.substring(0,2);   
-
       var code;
+      console.log(lastTicketUsage);
 
-      for (var i = 0; i<types.length;i++) {
-        if (types[i]=="Único" || types[i]=="Duplo") {
-          if (date==dateNow.substring(0,2) || hourNow>hour) {
-            if (totalSecondsNow-secondsLastUsage>=2400) { 
-              code = 1;
-            } else {
-              code = 0;
-            }
-          } else if (dateNow.substring(0,2)>date) {    
-              if (secondsLastUsage-totalSecondsNow>=2400 && hourNow<hour){
+      if (lastTicketUsage=="") {
+        code=1;
+      } else {
+        lastTicketUsage=lastTicketUsage[0][0];
+        var time=lastTicketUsage.substring(13,21).split(":");
+        var hour = time[0]*3600;
+        var minute = time[1]*60;
+        var secondsLastUsage = hour+minute+time[2]*1;
+
+        var dateNow = new DateExtension().getDatetime();
+        var dayNow = dateNow.substring(0,2);
+        var monthNow = dateNow.substring(3,5)
+        var timeNow = dateNow.substring(13,21).split(":");
+        var hourNow = timeNow[0]*3600;
+        var minuteNow = timeNow[1]*60;
+        var totalSecondsNow = hourNow+minuteNow+timeNow[2]*1;
+
+        var date=lastTicketUsage.substring(0,2);
+        var month=lastTicketUsage.substring(3,5);
+
+        console.log(date);
+        console.log(monthNow, month);
+
+        for (var i = 0; i<types.length;i++) {
+          if (typeOfTicket=="Único" || typeOfTicket=="Duplo") {
+            if (date==dateNow.substring(0,2) || hourNow>hour) {
+              if (totalSecondsNow-secondsLastUsage>=2400) { 
                 code = 1;
               } else {
                 code = 0;
-                console.log(secondsLastUsage-totalSecondsNow);
               }
+            } else if (dateNow.substring(0,2)>date) {    
+                if (secondsLastUsage-totalSecondsNow>=2400 && hourNow<hour){
+                  code = 1;
+                } else {
+                  code = 0;
+                  console.log(secondsLastUsage-totalSecondsNow);
+                }
+            }
+          } else if (typeOfTicket=="Semanal") {
+            if (month==monthNow) {
+              if (dayNow-date>=7 && secondsLastUsage<totalSecondsNow) { 
+                code = 1;
+              } else {
+                code = 0;
+              }
+            } else if (monthNow>month) {    
+                if (date-dayNow>=7 && secondsLastUsage<totalSecondsNow){
+                  code = 1;
+                } else {
+                  code = 0;
+                  console.log(dayNow-date);
+                }
+            }
+          } else if (typeOfTicket=="Mensal") {           
+            if (month==monthNow) {
+                code = 0;
+            } else if (monthNow-month==1) {    
+                if (dayNow>date && secondsLastUsage<totalSecondsNow){
+                  code = 1;
+                } else {
+                  code = 0;
+                  console.log(dayNow-date);
+                }
+            }
           }
         }
-      }
+      }  
       console.log(code);
       return code;
     } catch(err) {
@@ -258,12 +297,16 @@ class DB {
             result2 = await this.connection.execute(sqlCommandUpdate,data2);
             break;
           case "Semanal":
-            data2 = result.rows[0][2]-1
-            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+            data2 = [result.rows[0][2]-1,idTicket]
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET WEEKLY_TICKET = " + "(:0)" + " WHERE USER_ID = " + "(:1)";
+            this.UsingUserTicket(usageId, typeOfTicket, dateNow, idTicket);     
+            result2 = await this.connection.execute(sqlCommandUpdate,data2);
             break;
           case "Mensal":
-            data2 = result.rows[0][3]-1
-            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + data2 + " WHERE USER_ID = " + "'"+ idTicket +"'";
+            data2 = [result.rows[0][3]-1,idTicket]
+            sqlCommandUpdate = "UPDATE TICKET_AMOUNT SET MONTHLY_TICKET = " + "(:0)" + " WHERE USER_ID = " + "(:1)";
+            this.UsingUserTicket(usageId, typeOfTicket, dateNow, idTicket);     
+            result2 = await this.connection.execute(sqlCommandUpdate,data2);
             break;
           default:
             break;
@@ -298,12 +341,12 @@ class DB {
       var data = [idTicket,typeOfTicket];
       let result = await this.connection.execute(sqlCommandGetLastTicketUsage,data);
 
-      console.log(result.rowsAffected);
+      console.log(result.rows);
       console.log(sqlCommandGetLastTicketUsage,data);
       console.log(result.rows);
 
       this.connection.commit(); 
-      return result.rows[0][0];
+      return result.rows;
     } catch(err) {
       console.error(err);
     }
