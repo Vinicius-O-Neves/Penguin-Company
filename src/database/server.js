@@ -18,12 +18,12 @@ class DB {
     } 
   }
   
-  async createUserTicket(idTicketUser, date, amountSpend, modality) {
+  async createUserTicket(idTicketUser, date, amountSpend, modality, type) {
     try {
-      const sqlCommand = "INSERT INTO TICKET_USER (ID_TICKET_USER, GENERATION_DATE, AMOUNT_SPEND, MODALITY) "+
-        "VALUES (:0, :1, :2, :3)";
+      const sqlCommand = "INSERT INTO TICKET_USER (ID_TICKET_USER, GENERATION_DATE, AMOUNT_SPEND, MODALITY, TYPE_TICKET) "+
+        "VALUES (:0, :1, :2, :3, :4)";
       
-      const data = [idTicketUser, date, amountSpend, modality];
+      const data = [idTicketUser, date, amountSpend, modality, type];
       let result = await this.connection.execute(sqlCommand, data);
       
       console.log(result.rowsAffected);
@@ -192,80 +192,79 @@ class DB {
   async canUse (idTicket,typeOfTicket,usageId) {
     try {
       var types = ["Único","Duplo","Semanal","Mensal"];
-      var lastTicketUsage = await this.getLastTicketUsage(idTicket,typeOfTicket,usageId);
-      var code;
+      
+      var code=[];
       console.log(lastTicketUsage);
 
-      if (lastTicketUsage=="") {
-        code=1;
-      } else {
-        lastTicketUsage=lastTicketUsage[0][0];
-        var time=lastTicketUsage.substring(13,21).split(":");
-        var hour = time[0]*3600;
-        var minute = time[1]*60;
-        var secondsLastUsage = hour+minute+time[2]*1;
+      var dateNow = new DateExtension().getDatetime();
+      var dayNow = dateNow.substring(0,2);
+      var monthNow = dateNow.substring(3,5)
+      var timeNow = dateNow.substring(13,21).split(":");
+      var hourNow = timeNow[0]*3600;
+      var minuteNow = timeNow[1]*60;
+      var totalSecondsNow = hourNow+minuteNow+timeNow[2]*1;
 
-        var dateNow = new DateExtension().getDatetime();
-        var dayNow = dateNow.substring(0,2);
-        var monthNow = dateNow.substring(3,5)
-        var timeNow = dateNow.substring(13,21).split(":");
-        var hourNow = timeNow[0]*3600;
-        var minuteNow = timeNow[1]*60;
-        var totalSecondsNow = hourNow+minuteNow+timeNow[2]*1;
+      
+      for (var i = 0; i<types.length;i++) {
+        var lastTicketUsage = await this.getLastTicketUsage(idTicket,types[i],usageId);
 
-        var date=lastTicketUsage.substring(0,2);
-        var month=lastTicketUsage.substring(3,5);
+        if (lastTicketUsage=="") {
+          code.push(1);
+        } else {
+          lastTicketUsage=lastTicketUsage[0][0];
+          var time=lastTicketUsage.substring(13,21).split(":");
+          var hour = time[0]*3600;
+          var minute = time[1]*60;
+          var secondsLastUsage = hour+minute+time[2]*1;
 
-        console.log(date);
-        console.log(monthNow, month);
+          var date=lastTicketUsage.substring(0,2);
+          var month=lastTicketUsage.substring(3,5); 
 
-        for (var i = 0; i<types.length;i++) {
-          if (typeOfTicket=="Único" || typeOfTicket=="Duplo") {
+          if (types[i]=="Único" || types[i]=="Duplo") {
             if (date==dateNow.substring(0,2) || hourNow>hour) {
               if (totalSecondsNow-secondsLastUsage>=2400) { 
-                code = 1;
+                code.push(1);
               } else {
-                code = 0;
+                code.push(0);
               }
             } else if (dateNow.substring(0,2)>date) {    
                 if (secondsLastUsage-totalSecondsNow>=2400 && hourNow<hour){
-                  code = 1;
+                  code.push(1);
+                } else if (totalSecondsNow-secondsLastUsage>=2400 && hourNow>hour) {
+                  code.push(1);
                 } else {
-                  code = 0;
-                  console.log(secondsLastUsage-totalSecondsNow);
+                  code.push(0);
                 }
             }
-          } else if (typeOfTicket=="Semanal") {
+          } else if (types[i]=="Semanal") {
             if (month==monthNow) {
               if (dayNow-date>=7 && secondsLastUsage<totalSecondsNow) { 
-                code = 1;
+                code.push(1);
               } else {
-                code = 0;
+                code.push(0);
               }
             } else if (monthNow>month) {    
-                if (date-dayNow>=7 && secondsLastUsage<totalSecondsNow){
-                  code = 1;
-                } else {
-                  code = 0;
-                  console.log(dayNow-date);
-                }
+              if (date-dayNow>=7 && secondsLastUsage<totalSecondsNow){
+                code.push(1);
+              } else {
+                code.push(0);
+              }
             }
-          } else if (typeOfTicket=="Mensal") {           
+          } else if (types[i]=="Mensal") {           
             if (month==monthNow) {
-                code = 0;
+              code.push(0);
             } else if (monthNow-month==1) {    
-                if (dayNow>date && secondsLastUsage<totalSecondsNow){
-                  code = 1;
-                } else {
-                  code = 0;
-                  console.log(dayNow-date);
-                }
+              if (dayNow>date && secondsLastUsage<totalSecondsNow){
+                code.push(1);
+              } else {
+                code.push(0);
+              }
             }
           }
-        }
-      }  
-      console.log(code);
-      return code;
+        }  
+      }
+    
+      return code.includes(0) ? 0 : 1
     } catch(err) {
       console.error(err);
     }
@@ -347,6 +346,44 @@ class DB {
 
       this.connection.commit(); 
       return result.rows;
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  async getHistory(idTicket) {
+    try {
+      var sqlCommandGetGeneration = "SELECT GENERATION_DATE, TYPE_TICKET FROM TICKET_USER WHERE ID_TICKET_USER = " + "'"+idTicket+"'";
+      var sqlCommandGetRecharges = "SELECT DATE_HOUR_RECHARGE, TYPE_ID_RECHARGE FROM RECHARGE WHERE USER_ID = " + "'"+idTicket+"'";
+      var sqlCommandGetUsages = "SELECT DATE_HOUR_TICKET_USING, TYPE_TICKET_USING FROM TICKET_USING WHERE USER_ID = " + "'"+idTicket+"'";
+      
+      var generation = await this.connection.execute(sqlCommandGetGeneration);
+      var recharges = await this.connection.execute(sqlCommandGetRecharges);
+      var usages = await this.connection.execute(sqlCommandGetUsages);
+
+      var result = [[generation.rows[0]],[],[]];
+      result[0][0].push("Geração");
+
+      if (recharges.rows.length) {
+        for (var i = 0; i<=recharges.rows.length; i++) {
+          if (recharges.rows[i]!=undefined) {
+            result[1].push(recharges.rows[i]);
+            result[1][i].push("Recarga");
+          }
+        }
+      }
+
+      if (usages.rows.length) {
+        for (var j = 0; j<=usages.rows.length; j++) {
+          if (usages.rows[j]!=undefined) {
+            result[2].push(usages.rows[j]);
+            result[2][j].push("Uso");
+          }
+        }
+      }
+
+      this.connection.commit(); 
+      return result;
     } catch(err) {
       console.error(err);
     }

@@ -66,10 +66,14 @@ class NodeConfiguration {
         app.use(express.static(__dirname + '/pages/history/historyCardScreen/styles'));
         app.use(express.static(__dirname + '/pages/history/historyCardScreen/scripts'));
         app.use(express.static(__dirname + '/pages/history/historyCardScreen/public'));
-        
+                
+        app.use(express.static(__dirname + '/pages/history/historyRelatory/styles'));
+        app.use(express.static(__dirname + '/pages/history/historyRelatory/public/images'));
+        app.use(express.static(__dirname + '/pages/history/historyRelatory/scripts'));
+        /* -------------------------------------------------------------------------------------------- */
 
         app.listen(5500, () => {
-            console.log("servidor rodando\n");
+            console.log("servidor rodando");
         });
 
         return app;

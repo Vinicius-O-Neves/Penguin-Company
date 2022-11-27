@@ -47,10 +47,6 @@ btns.forEach((btnClicked,btnClickPosition) => {
     })
 })
 
-function teste() {
-    var x = btnsClickedState.indexOf(true);
-    return x;
-}
 
 function canUse () {
     let canBeUsed = localStorage.getItem("canUse");
@@ -62,17 +58,3 @@ function canUse () {
     }
 }
 
-function select(selfTag) {
-    var x = document
-    
-    if (x=="Único") {
-      
-    } else if (x=='Duplo') {
-      
-    } else if (x=='Semanal') {
-      
-    } else if (x=='Mensal') {
-      
-    }
-    return x;
-  }

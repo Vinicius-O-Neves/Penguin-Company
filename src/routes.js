@@ -9,7 +9,7 @@ const DB = require('./database/server.js');
 const { BIND_IN, BIND_OUT } = require('oracledb');
 const database = new DB();
 
-var rechargeUser, amountTicket;
+var rechargeUser, amountTicket, history;
 let userId, date, idTicket, type;
 var modality;
 
@@ -42,13 +42,16 @@ app.post('/ticketGenerenated', async(req, res) => {
         userId,
         date,
         2,
-        modality
+        modality,
+        type
     );
     await database.createAmountOfTickets(
         userId,
         type
     );
 });
+
+
 
 app.get('/ticketGenerenated', async(req, res) => {
     res.send([modality, type, date, userId]);
@@ -178,4 +181,16 @@ app.get('/validated', (req, res) => {
 
 app.get('/historico', async(req, res) => {
     res.sendFile(__dirname + '/pages/history/historyCardScreen/historyCardScreen.html');
+});
+
+app.post('/historicoRelatory', async(req, res) => {
+    res.sendFile(__dirname + '/pages/history/historyRelatory/index.html');
+
+    idTicket = req.body["pass_number"];
+
+    history = await database.getHistory(idTicket);
+});
+
+app.get('/historicoRelatory', (req, res) => {
+    res.send([history,idTicket]); 
 });
