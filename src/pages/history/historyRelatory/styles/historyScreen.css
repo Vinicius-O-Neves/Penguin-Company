@@ -57,48 +57,6 @@ h1 {
     flex-direction: column;
 }
 
-.options_section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-
-.types_radio_group {
-    width: max-content;
-    display: flex;
-    float: left;
-    display: inline-flex;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-bottom: 2%;
-    margin-left: 10px;
-}
-
-.radio_btn {
-    display: none;
-}
-
-.radio_btn_txt {
-    padding: 8px 14px;
-    font-family: 'Jost', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
-    background: #757576;
-    cursor: pointer;
-    transition: background 0.1s;
-}
-
-.radio_btn_txt:not(:last-of-type) {
-    border-right: 1px solid #adadad;
-}
-
-.radio_btn:checked + .radio_btn_txt {
-    background: #adadad;
-}
-
 table, th,td{
     border: 1px solid #444;
     border-collapse: collapse;

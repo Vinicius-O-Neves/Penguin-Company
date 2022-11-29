@@ -1,4 +1,4 @@
-var history;
+var history, table;
 
 const url = "http://localhost:5500/historicoRelatory";
 function getHistory() {
@@ -10,9 +10,10 @@ function getHistory() {
         })
         .catch(error => console.log(error))
 }
+getHistory();
 
 function createTable(history) {
-    var table = document.getElementById("historyTable");
+    table = document.getElementById("historyTable");
 
     history.forEach(element => {
         Object.values(element).forEach((compraItems) => {
@@ -27,17 +28,3 @@ function createTable(history) {
         })
     });
 }
-getHistory();
-
-function radioButtonsListener(radioButton) {
-    const rows = document.querySelectorAll("tbody tr");
-
-    if (radioButton.checked) {
-        rows.forEach((row) => {
-            if (history.includes(row.querySelector("td").textContent.toLowerCase)) {
-                console.log("Recarga");
-            }
-        })
-    } 
-}
-radioButtonsListener()
