@@ -183,11 +183,21 @@ app.get('/historico', async(req, res) => {
 });
 
 app.post('/historicoRelatory', async(req, res) => {
-    res.sendFile(__dirname + '/pages/history/historyRelatory/index.html');
-
     idTicket = req.body["pass_number"];
 
+    rechargeUser = await database.checkUserId(
+        idTicket
+    );
+
     history = await database.getHistory(idTicket);
+    
+    if (rechargeUser==0){
+        /*res.sendFile(__dirname + '/pages/recharge/searchCardScreen/index.html');*/
+    } else {
+        res.sendFile(__dirname + '/pages/history/historyRelatory/index.html');
+    }
+
+    
 });
 
 app.get('/historicoRelatory', (req, res) => {
