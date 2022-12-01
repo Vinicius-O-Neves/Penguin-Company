@@ -90,9 +90,9 @@ app.post('/successRecharge', async(req, res) => {
     console.log(date, rechargeUser[0][0],type); 
   
     await database.rechargeUserTicket(
-        rechargeId,
-        date,
-        rechargeUser[0][0],
+        rechargeId, 
+        date, 
+        rechargeUser[0][0], 
         type
     );
 
@@ -107,7 +107,6 @@ app.get('/rechargeVoucher', async(req, res) => {
 });
 
 app.post('/rechargeVoucher', async(req, res) => {
-    //data, id, tipo, modalidade
     res.send([date, rechargeUser[0][0], type, rechargeUser[0][3]]);
 });
 
