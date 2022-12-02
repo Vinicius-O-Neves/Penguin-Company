@@ -18,7 +18,8 @@ template.innerHTML = `
                 <li class="page_footer_link"><a href="/buy"><u>Comprar Ticket</u></a></li>
                 <li class="page_footer_link"><a href="/validar"><u>Gerenciar Ticket</u></a></li>
                 <li class="page_footer_link"><a href="/searchCard"><u>Regarregar Ticket</u></a></li>
-                <li class="page_footer_link"><a href="#"><u>Sobre nós</u></a></li>
+                <li class="page_footer_link"><a href="/historico"><u>Histórico</u></a></li>
+                <li class="page_footer_link"><a href="/home"><u>Sobre nós</u></a></li>
             </ul>
             <img class="row1_element warranty_img row_1" src="/warranty.svg">
         </div>
