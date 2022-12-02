@@ -377,7 +377,7 @@ class DB {
         for (var j = 0; j<=usages.rows.length; j++) {
           if (usages.rows[j]!=undefined) {
             result[2].push(usages.rows[j]);
-            result[2][j].push("Uso");
+            result[2][j].push("Utilização");
           }
         }
       }
