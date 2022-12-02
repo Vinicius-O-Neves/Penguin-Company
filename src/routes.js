@@ -106,7 +106,7 @@ app.get('/rechargeVoucher', async(req, res) => {
 });
 
 app.post('/rechargeVoucher', async(req, res) => {
-    res.send([date, rechargeUser[0][0], type, rechargeUser[0][3]]);
+    res.send([date, rechargeUser[0][0], type, rechargeUser[0][2]]);
 });
 
 
