@@ -41,7 +41,6 @@ app.post('/ticketGenerenated', async(req, res) => {
     await database.createUserTicket(
         userId,
         date,
-        2,
         modality,
         type
     );

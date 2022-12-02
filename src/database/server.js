@@ -18,12 +18,12 @@ class DB {
     } 
   }
   
-  async createUserTicket(idTicketUser, date, amountSpend, modality, type) {
+  async createUserTicket(idTicketUser, date, modality, type) {
     try {
-      const sqlCommand = "INSERT INTO TICKET_USER (ID_TICKET_USER, GENERATION_DATE, AMOUNT_SPEND, MODALITY, TYPE_TICKET) "+
-        "VALUES (:0, :1, :2, :3, :4)";
+      const sqlCommand = "INSERT INTO TICKET_USER (ID_TICKET_USER, GENERATION_DATE, MODALITY, TYPE_TICKET) "+
+        "VALUES (:0, :1, :2, :3)";
       
-      const data = [idTicketUser, date, amountSpend, modality, type];
+      const data = [idTicketUser, date, modality, type];
       let result = await this.connection.execute(sqlCommand, data);
       
       console.log(result.rowsAffected);
